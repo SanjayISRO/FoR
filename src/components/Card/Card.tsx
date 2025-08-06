@@ -5,7 +5,7 @@ import styles from "./Card.module.css";
 import type { dispatchAction } from "../Layouts/DataInputSources/DataInputSources";
 
 export interface ICardData {
-  imgSrc: any;
+  imgSrc?: any;
   heading: string;
   subText: string;
   inputType: "radio" | "checkbox";
