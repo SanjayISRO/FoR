@@ -1,0 +1,8 @@
+.graph_container {
+    width: 32%;
+    border: 2px solid #192a51;
+    padding: 20px;
+    border-radius: 5px;
+    min-height: 300px;
+
+}

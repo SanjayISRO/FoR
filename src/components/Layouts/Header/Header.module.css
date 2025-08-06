@@ -1,0 +1,33 @@
+.header {
+    border: 1px solid #192a50;
+    /* height: 75px; */
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.content_header {
+    display: flex;
+    align-items: center;
+}
+
+.title {
+    font-size: 25px;
+    margin: 0 0 0 21px;
+    color: #192a50;
+}
+
+.button {
+    border: 1px solid #192a50 !important;
+    padding: 15px !important;
+    width: 120px !important;
+}
+
+.loading_label {
+    border: 1px solid #c5d2dd;
+    height: 12px;
+    width: 80px;
+    border-radius: 20px;
+    background: #c5d2dd;
+}

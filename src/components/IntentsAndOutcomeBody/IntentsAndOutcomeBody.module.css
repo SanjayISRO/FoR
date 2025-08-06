@@ -1,0 +1,67 @@
+.body_container {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+    align-items: center;
+}
+
+.index_text {
+    border-radius: 50%;
+    width: 40px;
+    height: 30px;
+    background-color: #b6e1e7;
+    font-size: 12px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title_and_description {
+    width: 250px;
+    margin: 0 15px;
+}
+
+.chips_section {
+    width: 200px;
+    text-align: center;
+}
+
+.action_section {
+    width: 200px;
+}
+.title_and_description h4 {
+    font-size: 15px;
+    font-weight: bolder;
+}
+
+.metrics{
+    margin: 15px 0;
+    display: flex;
+    font-size: 12px;
+    justify-content: flex-start;
+    font-weight: 600;
+    color: #172950;
+}
+
+.metrics div {
+    margin: 0 10px 0 0;
+}
+
+.metric_icon {
+    margin: 0 5px 0 0;
+}
+
+.action_section button {
+    border: 1px solid #172950;
+    background: #fff;
+    border-radius: 5px;
+    margin: 0 5px 0 0;
+    padding: 5px;
+}
+
+.action_section {
+    width: 225px;
+    margin: 0 0 0 10px;
+}

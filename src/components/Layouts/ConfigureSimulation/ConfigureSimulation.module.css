@@ -1,0 +1,69 @@
+.simulation_header h4{
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.simulation_header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 85%;
+}
+
+.simulation_header button {
+    border: 2px solid #1a327a;
+    background-color: transparent;
+    padding: 5px 10px;
+    font-size: 12px;
+    color: #1a327a;
+    margin: 0 0 0 15px;
+    font-weight: 500;
+    border-radius: 5px;
+}
+
+.simulation_overview_title {
+    font-size: 15px;
+    color: #1a327a;
+}
+
+.simulation_overview_title span {
+    margin: 0 5px;
+    color: #000;
+}
+
+.computed_data {
+    width: 100%;
+    display: flex;
+    text-align: center;
+}
+
+.computed_data div {
+    width: 25%;
+}
+
+.computed_data div h4 {
+    font-size: 15px;
+    font-weight: bold;
+    color: #1a327a;
+}
+
+.computed_data div p {
+    font-size: 15px;
+    margin-bottom: 0;
+    color: #1a327a;
+}
+
+.simulation_containers {
+    width: 85%;
+    display: flex;
+    margin: 25px 0;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.date_range_container {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}

@@ -1,0 +1,8 @@
+.slider_container {
+    display: flex;
+}
+
+.slider_container p {
+    margin: 0 25px;
+    font-size: 15px;
+}

@@ -1,0 +1,10 @@
+.container_heading {
+    display: flex;
+    align-items: center;
+    /* padding: 0 15px; */
+}
+
+.container_heading h4 {
+    font-size: 15px;
+    margin: 0 15px;
+}
