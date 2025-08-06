@@ -41,4 +41,3 @@ src/
 ├── context/       # React context for state management
 ├── assets/        # Static assets (images, etc.)
 └── styles/        # CSS modules and styling
-```
