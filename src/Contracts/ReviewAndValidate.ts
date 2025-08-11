@@ -1,7 +1,7 @@
 export const CUSTOMER_INTENT_DATA = [
     {
       "id": 9,
-      "title": "Payment or billing issues",
+      "title": "Payment Or Billing Issues",
       "mappedClusterIntent": "Complaints & Escalations",
       "description": "Payment and billing problems are serious issues that can escalate quickly and require specialized handling to resolve financial concerns.",
       "confidence": "85% Confidence",
@@ -10,7 +10,7 @@ export const CUSTOMER_INTENT_DATA = [
     },
     {
       "id": 2,
-      "title": "Missing or incomplete order",
+      "title": "Missing Or Incomplete Order",
       "mappedClusterIntent": "Complaints & Escalations",
       "description": "Missing or incomplete orders represent service failures that require immediate attention and potential escalation to resolve customer dissatisfaction.",
       "confidence": "90% Confidence",
@@ -19,7 +19,7 @@ export const CUSTOMER_INTENT_DATA = [
     },
     {
       "id": 4,
-      "title": "Shipping address correction",
+      "title": "Shipping Address Correction",
       "mappedClusterIntent": "Order Tracking & Delivery",
       "description": "Address corrections are delivery-related issues that fall under shipping and delivery management.",
       "confidence": "85% Confidence",
@@ -28,7 +28,7 @@ export const CUSTOMER_INTENT_DATA = [
     },
     {
       "id": 7,
-      "title": "Cancel order",
+      "title": "Cancel Order",
       "mappedClusterIntent": "Order Tracking & Delivery",
       "description": "Order cancellation is part of order management and delivery processes, requiring intervention in the fulfillment pipeline.",
       "confidence": "82% Confidence",
@@ -37,7 +37,7 @@ export const CUSTOMER_INTENT_DATA = [
     },
     {
       "id": 8,
-      "title": "Order modification request",
+      "title": "Order Modification Request",
       "mappedClusterIntent": "Order Tracking & Delivery",
       "description": "Modifying orders involves tracking and managing delivery processes to implement changes before fulfillment.",
       "confidence": "80% Confidence",
@@ -46,7 +46,7 @@ export const CUSTOMER_INTENT_DATA = [
     },
     {
       "id": 10,
-      "title": "Lost or undelivered package",
+      "title": "Lost Or Undelivered Package",
       "mappedClusterIntent": "Complaints & Escalations",
       "description": "Lost packages represent significant service failures requiring investigation, compensation, and escalation to shipping partners.",
       "confidence": "92% Confidence",
@@ -55,7 +55,7 @@ export const CUSTOMER_INTENT_DATA = [
     },
     {
       "id": 3,
-      "title": "Request return or refund",
+      "title": "Request Return Or Refund",
       "mappedClusterIntent": "Returns & Exchanges",
       "description": "Exact match to the Returns & Exchanges cluster which handles return requests as a primary example intent.",
       "confidence": "100% Confidence",
@@ -64,7 +64,7 @@ export const CUSTOMER_INTENT_DATA = [
     },
     {
       "id": 1,
-      "title": "Order status inquiry",
+      "title": "Order Status Inquiry",
       "mappedClusterIntent": "Order Tracking & Delivery",
       "description": "Direct match to tracking orders, which is a core example in the Order Tracking & Delivery cluster.",
       "confidence": "98% Confidence",
@@ -73,7 +73,7 @@ export const CUSTOMER_INTENT_DATA = [
     },
     {
       "id": 5,
-      "title": "Product warranty claim",
+      "title": "Product Warranty Claim",
       "mappedClusterIntent": "Warranty & Repairs",
       "description": "Direct match to the Warranty & Repairs cluster which specifically handles warranty-related inquiries.",
       "confidence": "100% Confidence",
@@ -82,7 +82,7 @@ export const CUSTOMER_INTENT_DATA = [
     },
     {
       "id": 6,
-      "title": "Promo code or discount issues",
+      "title": "Promo Code Or Discount Issues",
       "mappedClusterIntent": "Loyalty Program & Offers",
       "description": "Promotional codes and discounts are part of offers and promotional programs managed under loyalty and offers.",
       "confidence": "88% Confidence",
@@ -91,7 +91,7 @@ export const CUSTOMER_INTENT_DATA = [
     },
     {
       "id": 11,
-      "title": "Product quality or defect issues",
+      "title": "Product Quality Or Defect Issues",
       "mappedClusterIntent": "Complaints & Escalations",
       "description": "Quality and defect issues represent product failures that require escalation for resolution and potential warranty/return processing.",
       "confidence": "95% Confidence",
@@ -100,7 +100,7 @@ export const CUSTOMER_INTENT_DATA = [
     },
     {
       "id": 12,
-      "title": "Website or technical issues",
+      "title": "Website Or Technical Issues",
       "mappedClusterIntent": "Complaints & Escalations",
       "description": "Technical problems preventing customers from using services require escalation to technical teams and immediate attention.",
       "confidence": "88% Confidence",
@@ -109,7 +109,7 @@ export const CUSTOMER_INTENT_DATA = [
     },
     {
       "id": 13,
-      "title": "Shipping or delivery inquiries",
+      "title": "Shipping Or Delivery Inquiries",
       "mappedClusterIntent": "Order Tracking & Delivery",
       "description": "Perfect match for the Order Tracking & Delivery cluster which handles shipping and delivery questions as core functionality.",
       "confidence": "100% Confidence",
@@ -118,7 +118,7 @@ export const CUSTOMER_INTENT_DATA = [
     },
     {
       "id": 14,
-      "title": "Account or membership issues",
+      "title": "Account Or Membership Issues",
       "mappedClusterIntent": "Loyalty Program & Offers",
       "description": "Account and membership issues relate to customer loyalty programs and membership management systems.",
       "confidence": "85% Confidence",
@@ -127,7 +127,7 @@ export const CUSTOMER_INTENT_DATA = [
     },
     {
       "id": 15,
-      "title": "Product information request",
+      "title": "Product Information Request",
       "mappedClusterIntent": "Product Education",
       "description": "Requests for product information directly match the Product Education cluster which provides product details and specifications.",
       "confidence": "98% Confidence",
@@ -136,14 +136,14 @@ export const CUSTOMER_INTENT_DATA = [
     },
     {
       "id": 16,
-      "title": "First-time customer discount",
+      "title": "First-Time Customer Discount",
       "mappedClusterIntent": "Loyalty Program & Offers",
       "description": "First-time customer discounts are promotional offers that fall under loyalty programs and special offers management.",
       "confidence": "90% Confidence",
       "rank": 16,
       "priority": "Important"
     }
-  ]
+  ];  
 
   export const BUSINESS_OUTCOME_DATA = [
     {
@@ -288,6 +288,6 @@ export const CUSTOMER_INTENT_DATA = [
     }
   ]
   
-  export const DROP_DOWN_LIST = ['Contact Center Goals', 'Customer Churn Rate Reduction', 'Revenue Generation']
+  export const DROP_DOWN_LIST = ['Customer Churn Rate Reduction', 'Revenue Generation', 'Increase Loyalty']
 
    

@@ -243,7 +243,9 @@ const ReviewAndValidate: React.FC = () => {
       />
 
       <div className={styles.filter_block}>
-        <h4 id="demo-multiple-name-label" style={{ margin:'10px 0'}}>Business Objective</h4>
+        <h4 id="demo-multiple-name-label" style={{ margin: "10px 0" }}>
+        Contact Center Goals
+        </h4>
         <Select
           labelId="demo-multiple-checkbox-label"
           id="demo-multiple-checkbox"
@@ -251,7 +253,13 @@ const ReviewAndValidate: React.FC = () => {
           value={selectedData}
           onChange={(e) => handleChange(e)}
           MenuProps={MenuProps}
-          renderValue={(selected) => selected.join(", ")}
+          displayEmpty
+          renderValue={(selected) => {
+            if (!selected.length) {
+              return <em style={{fontSize: '12px'}}>Choose Contact Center Goals</em>;
+            }
+            return selected.join(", ");
+          }}
           sx={{
             width: "49%",
             "& .MuiSelect-select": {
