@@ -25,7 +25,7 @@ const CheckboxComponent: React.FC<CheckboxComponentProps> = ({
         items.length &&
         items.map((item, index) => (
           <div key={from + "_" + index} className={styles.options}>
-            <input type="checkbox" value={item.value} checked={item.checked} />
+            <input type="checkbox" value={item.value} checked={item.checked}/>
             <span style={{ margin: "0 6px" }}>{item.label}</span>
           </div>
         ))}

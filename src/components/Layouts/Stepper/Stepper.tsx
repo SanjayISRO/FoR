@@ -10,7 +10,6 @@ import {
   faCircleCheck
 } from "@fortawesome/free-solid-svg-icons";
 
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 // Local dependencies import
 import ProgressBar from "../../ProgressBar/ProgressBar";
@@ -30,27 +29,34 @@ const Stepper: React.FC = () => {
           count={1}
           optionalMessage="Optional Message"
           top={60}
-          icon={state.currentProgress > 25 ? faCircleCheck : faCircleHalfStroke}
+          icon={state.currentProgress > 20 ? faCircleCheck : faCircleHalfStroke}
         />
         <StepperStage
           title="Filter & Review"
           count={2}
           optionalMessage="Optional Message"
-          top={175}
-          icon={state.currentProgress < 50 ? faSpinner : state.currentProgress > 50 ? faCircleCheck : faCircleHalfStroke}
+          top={165}
+          icon={state.currentProgress < 40 ? faSpinner : state.currentProgress > 60 ? faCircleCheck : faCircleHalfStroke}
+        />
+        <StepperStage
+          title="Agent Personas"
+          count={3}
+          optionalMessage="Optional Message"
+          top={275}
+          icon={state.currentProgress < 60 ? faSpinner : state.currentProgress > 80 ? faCircleCheck : faCircleHalfStroke}
         />
         <StepperStage
           title="Review & Validate"
-          count={3}
+          count={4}
           optionalMessage="Optional Message"
-          top={295}
-          icon={state.currentProgress < 75 ? faSpinner : state.currentProgress > 75 ? faCircleCheck : faCircleHalfStroke}
+          top={395}
+          icon={state.currentProgress < 80 ? faSpinner : state.currentProgress > 85 ? faCircleCheck : faCircleHalfStroke}
         />
         <StepperStage
           title="Configure Simulation"
-          count={4}
+          count={5}
           optionalMessage="Optional Message"
-          top={415}
+          top={510}
           icon={state.currentProgress < 100 ? faSpinner : state.currentProgress > 100 ? faCircleCheck : faCircleHalfStroke}
         />
       </div>

@@ -13,6 +13,7 @@ import DataInputSources from "../../components/Layouts/DataInputSources/DataInpu
 import FilterAndReview from "../../components/Layouts/FilterAndReview/FilterAndReview";
 import ReviewAndValidate from "../../components/Layouts/ReviewAndValidate/ReviewAndValidate";
 import ConfigureSimulation from "../../components/Layouts/ConfigureSimulation/ConfigureSimulation";
+import AgentPersonas from "../../components/Layouts/AgentPersonas/AgentPersonas";
 
 const SimulationSetup: React.FC = () => {
   const { state, dispatch } = useAppContext();
@@ -23,8 +24,9 @@ const SimulationSetup: React.FC = () => {
   const stepperPageCount = {
     1: "dataInputSources",
     2: "filterAndReview",
-    3: "reviewAndValidate",
-    4: "configureSimulation",
+    3: 'agentPersonas',
+    4: "reviewAndValidate",
+    5: "configureSimulation",
   };
 
   useEffect(() => {
@@ -32,6 +34,7 @@ const SimulationSetup: React.FC = () => {
   }, []);
 
   const handleOnClick = (navigateTo: string): void => {
+    window.scroll(0,0);
     let newPageNo: number;
 
     switch (navigateTo) {
@@ -42,10 +45,11 @@ const SimulationSetup: React.FC = () => {
         newPageNo = pageNo - 1;
         break;
       case "cancel":
+        newPageNo = 1;
         break;
-      case 'simulate':
-        navigate('/simulation-analytics');
-        break;
+      case "simulate":
+        navigate("/simulation-analytics");
+        return;
       default:
         newPageNo = 1;
         break;
@@ -74,17 +78,28 @@ const SimulationSetup: React.FC = () => {
         </section>
 
         <section className={styles.data_input_sources}>
-          {state.currentPage === 'dataInputSources' && <DataInputSources />}
-          {state.currentPage === 'filterAndReview' && <FilterAndReview />}
-          {state.currentPage === 'reviewAndValidate' && <ReviewAndValidate />}
-          {state.currentPage === 'configureSimulation' && <ConfigureSimulation />}
+          {state.currentPage === "dataInputSources" && <DataInputSources />}
+          {state.currentPage === "filterAndReview" && <FilterAndReview />}
+          {state.currentPage === "agentPersonas" && <AgentPersonas />}
+          {state.currentPage === "reviewAndValidate" && <ReviewAndValidate />}
+          {state.currentPage === "configureSimulation" && (
+            <ConfigureSimulation />
+          )}
         </section>
 
         <section className={styles.button_container}>
-          {state.currentPage === 'dataInputSources' && <button onClick={() => handleOnClick("cancel")}>Cancel</button>}
-          {state.currentPage !== 'dataInputSources' && <button onClick={() => handleOnClick("back")}>Back</button>}
-          {state.currentPage !== 'configureSimulation' && <button onClick={() => handleOnClick("next")}>Next</button>}
-          {state.currentPage === 'configureSimulation' && <button onClick={() => handleOnClick("simulate")}>Simulate</button>}
+          {state.currentPage === "dataInputSources" && (
+            <button onClick={() => handleOnClick("cancel")}>Cancel</button>
+          )}
+          {state.currentPage !== "dataInputSources" && (
+            <button onClick={() => handleOnClick("back")}>Back</button>
+          )}
+          {state.currentPage !== "configureSimulation" && (
+            <button onClick={() => handleOnClick("next")}>Next</button>
+          )}
+          {state.currentPage === "configureSimulation" && (
+            <button onClick={() => handleOnClick("simulate")}>Simulate</button>
+          )}
         </section>
       </div>
     </div>

@@ -1,3 +1,6 @@
+// React dependencies
+import { useState } from "react";
+
 // 3rd party dependencies
 import GroupsIcon from "@mui/icons-material/Groups";
 import AutoGraphIcon from "@mui/icons-material/AutoGraph";
@@ -6,11 +9,20 @@ import AutoGraphIcon from "@mui/icons-material/AutoGraph";
 import { useAppContext } from "../../../context/AppContext";
 import styles from "./ReviewAndValidate.module.css";
 import Note from "../../Note/Note";
-import { Divider } from "@mui/material";
+import {
+  Checkbox,
+  Divider,
+  ListItemText,
+  MenuItem,
+  OutlinedInput,
+  Select,
+  type SelectChangeEvent,
+} from "@mui/material";
 import IntentsAndOutcomeHeader from "../../IntentsAndOutcomeHeader/IntentsAndOutcomeHeader";
 import IntentsAndOutcomeBody, {
   type IntentsAndOutcomeBodyProps,
 } from "../../IntentsAndOutcomeBody/IntentsAndOutcomeBody";
+import { DROP_DOWN_LIST } from "../../../Contracts/ReviewAndValidate";
 
 interface ICustomerIntentMetrics {
   interactions: string;
@@ -25,8 +37,8 @@ export interface ICustomerIntent {
   description: string;
   priority: string;
   confidence: string;
-  businessImpact: string;
-  metrics: ICustomerIntentMetrics;
+  mappedClusterIntent: string;
+  // metrics: ICustomerIntentMetrics;
 }
 
 interface IBusinessOutcomeImpact {
@@ -42,15 +54,28 @@ export interface IBusinessOutcome {
   description: string;
   priority: string;
   confidence: string;
-  impact: IBusinessOutcomeImpact;
+  kpiDatas: string;
+  // impact: IBusinessOutcomeImpact;
 }
 
 const ReviewAndValidate: React.FC = () => {
   const { state, dispatch } = useAppContext();
+  const [selectedData, setSelectedData] = useState<string[]>([]);
+
+  const ITEM_HEIGHT = 48;
+  const ITEM_PADDING_TOP = 8;
+  const MenuProps = {
+    PaperProps: {
+      style: {
+        maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+        width: 250,
+      },
+    },
+  };
 
   function handleFormSubmit(data: IntentsAndOutcomeBodyProps) {
     // Check if it's a customer intent (has businessImpact or metrics)
-    if (data.businessImpact) {
+    if (data.mappedClusterIntent) {
       // Update customer intents
       const updatedIntents = state.customerIntentList.map((intent) =>
         intent.id === data.id
@@ -60,7 +85,8 @@ const ReviewAndValidate: React.FC = () => {
               description: data.description,
               priority: data.priority,
               confidence: data.confidence,
-              businessImpact: data.businessImpact || intent.businessImpact,
+              mappedClusterIntent:
+                data.mappedClusterIntent || intent.mappedClusterIntent,
             }
           : intent
       );
@@ -79,6 +105,7 @@ const ReviewAndValidate: React.FC = () => {
               description: data.description,
               priority: data.priority,
               confidence: data.confidence,
+              kpiDatas: data.kpiDatas || outcome.kpiDatas,
             }
           : outcome
       );
@@ -189,6 +216,17 @@ const ReviewAndValidate: React.FC = () => {
       }
     }
   };
+
+  const handleChange = (event: SelectChangeEvent<typeof selectedData>) => {
+    const {
+      target: { value },
+    } = event;
+
+    setSelectedData(
+      // On autofill we get a stringified value.
+      typeof value === "string" ? value.split(",") : value
+    );
+  };
   return (
     <>
       <h4 className={styles.heading}>Review & Validate Rankings</h4>
@@ -203,6 +241,32 @@ const ReviewAndValidate: React.FC = () => {
         alignment="center"
         widthValue="85%"
       />
+
+      <div className={styles.filter_block}>
+        <h4 id="demo-multiple-name-label" style={{ margin:'10px 0'}}>Business Objective</h4>
+        <Select
+          labelId="demo-multiple-checkbox-label"
+          id="demo-multiple-checkbox"
+          multiple
+          value={selectedData}
+          onChange={(e) => handleChange(e)}
+          MenuProps={MenuProps}
+          renderValue={(selected) => selected.join(", ")}
+          sx={{
+            width: "49%",
+            "& .MuiSelect-select": {
+              padding: "7px 20px",
+            },
+          }}
+        >
+          {DROP_DOWN_LIST.map((name) => (
+            <MenuItem key={name} value={name}>
+              <Checkbox checked={selectedData.includes(name)} />
+              <ListItemText primary={name} />
+            </MenuItem>
+          ))}
+        </Select>
+      </div>
 
       <section className={styles.container}>
         <section className={styles.intents_and_outcomes}>

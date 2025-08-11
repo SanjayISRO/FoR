@@ -1,0 +1,58 @@
+export const REVIEW_AND_FILTER_TABLE_DATA = [
+    {
+      id: 1,
+      conversationId: "CONV-2024-001",
+      customerIntent: "Payment Issue",
+      businessOutcome: ["Reduce Friction", "Retention"],
+      details: "view Details",
+    },
+    {
+      id: 2,
+      conversationId: "CONV-2024-002",
+      customerIntent: "Tech Support",
+      businessOutcome: ["First Call Resolution"],
+      details: "view Details",
+    },
+    {
+      id: 3,
+      conversationId: "CONV-2024-003",
+      customerIntent: "Billing Query",
+      businessOutcome: ["Customer Retention", "Upsell"],
+      details: "view Details",
+    },
+    {
+      id: 4,
+      conversationId: "CONV-2024-004",
+      customerIntent: "Account Help",
+      businessOutcome: ["Increase Revenue"],
+      details: "view Details",
+    },
+    {
+      id: 5,
+      conversationId: "CONV-2024-005",
+      customerIntent: "Cancel Subscription",
+      businessOutcome: ["Churn Management", "Retention"],
+      details: "view Details",
+    },
+    {
+      id: 6,
+      conversationId: "CONV-2024-006",
+      customerIntent: "Feedback",
+      businessOutcome: ["Improve Experience"],
+      details: "view Details",
+    },
+    {
+      id: 7,
+      conversationId: "CONV-2024-007",
+      customerIntent: "Login Issue",
+      businessOutcome: ["Friction Reduction"],
+      details: "view Details",
+    },
+    {
+      id: 8,
+      conversationId: "CONV-2024-008",
+      customerIntent: "Upgrade Plan",
+      businessOutcome: ["Revenue Growth"],
+      details: "view Details",
+    },
+  ]

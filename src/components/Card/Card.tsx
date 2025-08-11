@@ -22,7 +22,6 @@ interface ICard {
 
 const CardSection: React.FC<ICard> = ({ title, cardData, action, onChange }) => {
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    debugger;
     if (onChange) {
       onChange(e, action);
     }
@@ -34,7 +33,7 @@ const CardSection: React.FC<ICard> = ({ title, cardData, action, onChange }) => 
       {cardData && cardData.length && (
         <section className={styles.card_content_section}>
           {cardData.map((data, index) => (
-            <Card className={styles.card}>
+            <Card className={styles.card} key={`card_data_${index}}`}>
               <div key={index}>
                 <img src={data.imgSrc} alt={"Image for" + data.heading} />
                 <input

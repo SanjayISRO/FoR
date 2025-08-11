@@ -8,6 +8,7 @@ import type { GridColDef } from "@mui/x-data-grid";
 
 // Local dependencies
 import styles from "./TableData.module.css";
+import { REVIEW_AND_FILTER_TABLE_DATA } from "../../Contracts/ReviewAndFilter";
 
 const BACKGROUND_COLOR = "#172950";
 
@@ -101,64 +102,7 @@ const TableData: React.FC = () => {
   ];
 
   // Sample data rows
-  const rows = [
-    {
-      id: 1,
-      conversationId: "CONV-2024-001",
-      customerIntent: "Payment Issue",
-      businessOutcome: ["Reduce Friction", "Retention"],
-      details: "view Details",
-    },
-    {
-      id: 2,
-      conversationId: "CONV-2024-002",
-      customerIntent: "Tech Support",
-      businessOutcome: ["First Call Resolution"],
-      details: "view Details",
-    },
-    {
-      id: 3,
-      conversationId: "CONV-2024-003",
-      customerIntent: "Billing Query",
-      businessOutcome: ["Customer Retention", "Upsell"],
-      details: "view Details",
-    },
-    {
-      id: 4,
-      conversationId: "CONV-2024-004",
-      customerIntent: "Account Help",
-      businessOutcome: ["Increase Revenue"],
-      details: "view Details",
-    },
-    {
-      id: 5,
-      conversationId: "CONV-2024-005",
-      customerIntent: "Cancel Subscription",
-      businessOutcome: ["Churn Management", "Retention"],
-      details: "view Details",
-    },
-    {
-      id: 6,
-      conversationId: "CONV-2024-006",
-      customerIntent: "Feedback",
-      businessOutcome: ["Improve Experience"],
-      details: "view Details",
-    },
-    {
-      id: 7,
-      conversationId: "CONV-2024-007",
-      customerIntent: "Login Issue",
-      businessOutcome: ["Friction Reduction"],
-      details: "view Details",
-    },
-    {
-      id: 8,
-      conversationId: "CONV-2024-008",
-      customerIntent: "Upgrade Plan",
-      businessOutcome: ["Revenue Growth"],
-      details: "view Details",
-    },
-  ];
+  const rows = REVIEW_AND_FILTER_TABLE_DATA;
 
   const [conversationCount, setConversationCount] = useState<number | string>(
     0
@@ -168,7 +112,6 @@ const TableData: React.FC = () => {
   >(0);
 
   const handleSelectionChange = (selectionModel: any) => {
-    debugger;
     setSelectedConversationCount(selectionModel.length);
   };
 
@@ -201,7 +144,7 @@ const TableData: React.FC = () => {
             "& .MuiSvgIcon-fontSizeInherit": {
               display: "none",
             },
-            "& .MuiDataGrid-row:nth-child(even)": {
+            "& .MuiDataGrid-row:nth-of-type(even)": {
               backgroundColor: "#e7f2f6",
             },
             "& .MuiDataGrid-row .Mui-selected": {
@@ -224,6 +167,10 @@ const TableData: React.FC = () => {
               {
                 overflowY: "auto",
               },
+            "& .MuiDataGrid-columnHeaderTitle": {
+              fontWeight: "bold",
+              fontSize: "15px",
+            },
           }}
         />
       </div>

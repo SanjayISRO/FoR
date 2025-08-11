@@ -44,11 +44,12 @@ export interface IntentsAndOutcomeBodyProps {
   description: string;
   priority: string;
   confidence: string;
-  businessImpact?: string;
+  mappedClusterIntent?: string;
   metrics?: CustomerIntentMetrics;
   impact?: BusinessOutcomeImpact;
   disableDownArrow?: boolean;
   disableUpArrow?: boolean;
+  kpiDatas?: string;
   onSubmitChanges?: (updatedData: IntentsAndOutcomeBodyProps) => void;
   onMoveUp?: (id: number, isCustomerIntent: boolean) => void;
   onMoveDown?: (id: number, isCustomerIntent: boolean) => void;
@@ -61,6 +62,10 @@ const IntentsAndOutcomeBody: React.FC<IntentsAndOutcomeBodyProps> = (
   const [editData, setEditData] = useState<IntentsAndOutcomeBodyProps | null>(
     null
   );
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [animationDirection, setAnimationDirection] = useState<
+    "up" | "down" | null
+  >(null);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -83,8 +88,9 @@ const IntentsAndOutcomeBody: React.FC<IntentsAndOutcomeBodyProps> = (
       description: formJson.description as string,
       priority: formJson.priority as string,
       confidence: formJson.confidence as string,
-      businessImpact:
-        (formJson.businessImpact as string) || props.businessImpact,
+      mappedClusterIntent:
+        (formJson.mappedClusterIntent as string) || props.mappedClusterIntent,
+      kpiDatas: formJson.kpiDatas
     };
 
     // Call parent callback if provided
@@ -97,21 +103,51 @@ const IntentsAndOutcomeBody: React.FC<IntentsAndOutcomeBodyProps> = (
   };
 
   const handleMoveUp = () => {
-    if (props.onMoveUp) {
-      const isCustomerIntent = !!props.businessImpact || !!props.metrics;
-      props.onMoveUp(props.id, isCustomerIntent);
+    if (props.onMoveUp && !isAnimating) {
+      setIsAnimating(true);
+      setAnimationDirection("up");
+
+      // Add a small delay for visual feedback
+      setTimeout(() => {
+        const isCustomerIntent = !!props.mappedClusterIntent || !!props.metrics;
+        props.onMoveUp!(props.id, isCustomerIntent);
+
+        // Reset animation state after move
+        setTimeout(() => {
+          setIsAnimating(false);
+          setAnimationDirection(null);
+        }, 300);
+      }, 150);
     }
   };
 
   const handleMoveDown = () => {
-    if (props.onMoveDown) {
-      const isCustomerIntent = !!props.businessImpact || !!props.metrics;
-      props.onMoveDown(props.id, isCustomerIntent);
+    if (props.onMoveDown && !isAnimating) {
+      setIsAnimating(true);
+      setAnimationDirection("down");
+
+      // Add a small delay for visual feedback
+      setTimeout(() => {
+        const isCustomerIntent = !!props.mappedClusterIntent || !!props.metrics;
+        props.onMoveDown!(props.id, isCustomerIntent);
+
+        // Reset animation state after move
+        setTimeout(() => {
+          setIsAnimating(false);
+          setAnimationDirection(null);
+        }, 300);
+      }, 150);
     }
   };
 
   return (
-    <section>
+    <section
+      className={`${styles.item_container} ${
+        isAnimating ? styles.animating : ""
+      } ${animationDirection === "up" ? styles.moving_up : ""} ${
+        animationDirection === "down" ? styles.moving_down : ""
+      }`}
+    >
       <div className={styles.body_container}>
         <div className={styles.index_text}>{props.index}</div>
         <div className={styles.title_and_description}>
@@ -119,31 +155,37 @@ const IntentsAndOutcomeBody: React.FC<IntentsAndOutcomeBodyProps> = (
           <p>{props.description}</p>
         </div>
         <div className={styles.chips_section}>
-          <Chip
-            label={props.priority}
-            variant="outlined"
-            size="small"
-            sx={{
-              backgroundColor: "#172950",
-              borderColor: "#172950",
-              color: "#fff",
-              fontWeight: 500,
-              fontSize: "14px",
-              margin: "5px 0",
-            }}
-          />
-          <Chip
-            label={props.confidence}
-            variant="outlined"
-            size="small"
-            sx={{
-              backgroundColor: "#172950",
-              borderColor: "#172950",
-              color: "#fff",
-              fontWeight: 500,
-              fontSize: "14px",
-            }}
-          />
+          {props.priority && (
+            <Chip
+              label={props.priority}
+              variant="outlined"
+              size="medium"
+              sx={{
+                backgroundColor: "#172950",
+                borderColor: "#172950",
+                color: "#fff",
+                fontWeight: 500,
+                fontSize: "14px",
+                margin: "5px 0",
+                width: "100%",
+              }}
+            />
+          )}
+          {props.confidence && (
+            <Chip
+              label={props.confidence}
+              variant="outlined"
+              size="medium"
+              sx={{
+                backgroundColor: "#172950",
+                borderColor: "#172950",
+                color: "#fff",
+                fontWeight: 500,
+                fontSize: "14px",
+                width: "100%",
+              }}
+            />
+          )}
         </div>
         <div className={styles.action_section}>
           <button onClick={handleMoveDown} disabled={props.disableDownArrow}>
@@ -157,9 +199,16 @@ const IntentsAndOutcomeBody: React.FC<IntentsAndOutcomeBodyProps> = (
           </button>
         </div>
       </div>
-      {props.businessImpact && (
+      {props.mappedClusterIntent && (
         <Note
-          text={props.businessImpact}
+          text={props.mappedClusterIntent}
+          alignment="center"
+          widthValue="100%"
+        />
+      )}
+      {props.kpiDatas && (
+        <Note
+          text={props.kpiDatas}
           alignment="center"
           widthValue="100%"
         />
@@ -218,6 +267,7 @@ const IntentsAndOutcomeBody: React.FC<IntentsAndOutcomeBodyProps> = (
             border: "2px solid #172950",
             backgroundColor: "#f6f8ff",
             padding: "20px",
+            borderRadius: "20px",
           },
         }}
       >
@@ -288,12 +338,12 @@ const IntentsAndOutcomeBody: React.FC<IntentsAndOutcomeBodyProps> = (
               defaultValue={editData?.confidence || ""}
               sx={{ margin: "10px 0" }}
             />
-            {editData?.businessImpact && (
+            {editData?.mappedClusterIntent && (
               <TextField
                 margin="dense"
                 required
-                id="businessImpact"
-                name="businessImpact"
+                id="mappedClusterIntent"
+                name="mappedClusterIntent"
                 label="Business Impact"
                 type="text"
                 fullWidth
@@ -301,7 +351,25 @@ const IntentsAndOutcomeBody: React.FC<IntentsAndOutcomeBodyProps> = (
                 rows={2}
                 variant="standard"
                 autoComplete="off"
-                defaultValue={editData.businessImpact}
+                defaultValue={editData.mappedClusterIntent}
+                sx={{ margin: "10px 0" }}
+              />
+            )}
+
+{editData?.kpiDatas && (
+              <TextField
+                margin="dense"
+                required
+                id="kpiDatas"
+                name="kpiDatas"
+                label="KPI(s)"
+                type="text"
+                fullWidth
+                multiline
+                rows={2}
+                variant="standard"
+                autoComplete="off"
+                defaultValue={editData.kpiDatas}
                 sx={{ margin: "10px 0" }}
               />
             )}

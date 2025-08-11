@@ -28,19 +28,11 @@ const ConfigureSimulation: React.FC = () => {
   const [selectedEndDate, setSelectedEndDate] = useState<Dayjs | null>(null);
 
   const countries = [
-    { value: "1000", label: "10,000 conversations (Comprehensive)" },
-    { value: "canada", label: "Canada" },
-    { value: "uk", label: "United Kingdom" },
-    { value: "germany", label: "Germany" },
-    { value: "france", label: "France" },
+    { value: "1000", label: "10,000 conversations (Comprehensive)" }
   ];
 
   const countriesTwo = [
-    { value: "1000", label: "Current Routing Rules" },
-    { value: "canada", label: "Canada" },
-    { value: "uk", label: "United Kingdom" },
-    { value: "germany", label: "Germany" },
-    { value: "france", label: "France" },
+    { value: "1000", label: "Current Routing Rules" }
   ];
 
   const channelTypes = [
@@ -73,7 +65,7 @@ const ConfigureSimulation: React.FC = () => {
           </p>
         </div>
         <div>
-          <button>Save Conifuration</button>
+          <button>Save Conifiguration</button>
           <button>Load Template</button>
         </div>
       </section>

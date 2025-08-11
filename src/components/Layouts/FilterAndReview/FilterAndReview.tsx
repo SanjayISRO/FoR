@@ -94,7 +94,6 @@ const FilterAndReview: React.FC = () => {
             multiple
             value={intents}
             onChange={(e) => handleChange(e, 'intent')}
-            input={<OutlinedInput label="Tag" />}
             MenuProps={MenuProps}
             renderValue={(selected) => selected.join(", ")}
             sx={{
@@ -121,7 +120,6 @@ const FilterAndReview: React.FC = () => {
             multiple
             value={outcomes}
             onChange={(e) => handleChange(e, 'outcome')}
-            input={<OutlinedInput label="Tag" />}
             MenuProps={MenuProps}
             renderValue={(selected) => selected.join(", ")}
             sx={{

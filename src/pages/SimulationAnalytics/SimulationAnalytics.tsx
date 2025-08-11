@@ -1,7 +1,7 @@
-import KpiCard from "../../components/KpiCard/KpiCard";
-import SelectComponent from "../../components/SelectComponent/SelectComponent";
-import styles from "./SimulationAnalytics.module.css";
+// React dependencies
+import { useNavigate } from "react-router-dom";
 
+//3rd party dependencies
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import PhoneForwardedOutlinedIcon from "@mui/icons-material/PhoneForwardedOutlined";
 import CheckCircleOutlinedIcon from "@mui/icons-material/CheckCircleOutlined";
@@ -11,7 +11,17 @@ import GraphCard from "../../components/GraphCard/GraphCard";
 import { DataGrid, type GridColDef } from "@mui/x-data-grid";
 import { Chip } from "@mui/material";
 
+// Local dependencies
+import KpiCard from "../../components/KpiCard/KpiCard";
+import SelectComponent from "../../components/SelectComponent/SelectComponent";
+import styles from "./SimulationAnalytics.module.css";
+import { CONVERSATION_DATA } from "../../Contracts/SimulationAnalytics";
+import { useAppContext } from "../../context/AppContext";
+
 const SimulationAnalytics: React.FC = () => {
+  const navigate = useNavigate();
+  const {dispatch} = useAppContext();
+  
   const selectOptions = [
     {
       value: "All Intents",
@@ -56,69 +66,13 @@ const SimulationAnalytics: React.FC = () => {
     },
   ];
 
-  const conversationData = [
-    {
-      id: 1,
-      conversation: "CONV_001/2024-02-15",
-      intent: "Payment Issue",
-      originalTarget: "Agent John Doe (Billing)",
-      llmTarget: "Bot GeneralBot",
-      match: true,
-      confidence: "94%",
-      impact: "AHT: 8min > 2.7min",
-      details: "View Details",
-    },
-    {
-      id: 2,
-      conversation: "CONV_001/2024-02-15",
-      intent: "Payment Issue",
-      originalTarget: "Agent John Doe (Billing)",
-      llmTarget: "Bot GeneralBot",
-      match: true,
-      confidence: "94%",
-      impact: "AHT: 8min > 2.7min",
-      details: "View Details",
-    },
-    {
-      id: 3,
-      conversation: "CONV_001/2024-02-15",
-      intent: "Payment Issue",
-      originalTarget: "Agent John Doe (Billing)",
-      llmTarget: "Bot GeneralBot",
-      match: true,
-      confidence: "94%",
-      impact: "AHT: 8min > 2.7min",
-      details: "View Details",
-    },
-    {
-      id: 4,
-      conversation: "CONV_001/2024-02-15",
-      intent: "Payment Issue",
-      originalTarget: "Agent John Doe (Billing)",
-      llmTarget: "Bot GeneralBot",
-      match: true,
-      confidence: "94%",
-      impact: "AHT: 8min > 2.7min",
-      details: "View Details",
-    },
-    {
-      id: 5,
-      conversation: "CONV_001/2024-02-15",
-      intent: "Payment Issue",
-      originalTarget: "Agent John Doe (Billing)",
-      llmTarget: "Bot GeneralBot",
-      match: true,
-      confidence: "94%",
-      impact: "AHT: 8min > 2.7min",
-      details: "View Details",
-    },
-  ];
+  const conversationData = CONVERSATION_DATA;
 
   const columns: GridColDef[] = [
     {
       field: "conversation",
       headerName: "Conversation",
-      width: 180,
+      width: 200,
       sortable: false,
       renderCell: (params) => <p>{params.value}</p>,
     },
@@ -172,7 +126,13 @@ const SimulationAnalytics: React.FC = () => {
       sortable: false,
       renderCell: (params) => (
         <>
-        <progress style={{ accentColor: '#192a51'}} value={params.value.split('%')[0]} max="100"> </progress>
+          <progress
+            style={{ accentColor: "#192a51" }}
+            value={params.value.split("%")[0]}
+            max="100"
+          >
+            {" "}
+          </progress>
           <span
             style={{
               fontSize: "12px",
@@ -216,10 +176,24 @@ const SimulationAnalytics: React.FC = () => {
     // setSelectedConversationCount(selectionModel.length);
   };
 
+  const handleClick = () => {
+    dispatch({
+      type: 'SET_INITIAL_STATE'
+    });
+
+    navigate('/');
+  }
   return (
     <section className={styles.analytics_container}>
+      <div style={{display:'flex', justifyContent: 'space-between'}}>
+      <div>
       <h3>Target Selection Simulation Comparison</h3>
       <p>Compare LLM-selected targets with historical routing decisions</p>
+      </div><div>
+        <button className={styles.button_container} onClick={handleClick}>Back To Home</button>
+      </div>
+      </div>
+
 
       <div style={{ width: "25%" }}>
         <SelectComponent text="Show" name="analytics" entries={selectOptions} />
@@ -233,7 +207,7 @@ const SimulationAnalytics: React.FC = () => {
 
       <div className={styles.kpicard}>
         <GraphCard title="" />
-        <GraphCard title="Intent Mactch Accuracy by Category" />
+        <GraphCard title="Intent Match Accuracy by Category" />
         <GraphCard title="Intent to Outcome Success Rate" />
       </div>
 
@@ -277,6 +251,14 @@ const SimulationAnalytics: React.FC = () => {
                 {
                   overflowY: "auto",
                 },
+              "& .MuiDataGrid-columnHeaderCheckbox, .MuiDataGrid-cellCheckbox":
+                {
+                  display: "none",
+                },
+              "& .MuiDataGrid-columnHeaderTitle": {
+                fontWeight: "bold",
+                fontSize: "15px",
+              },
             }}
           />
         </div>
