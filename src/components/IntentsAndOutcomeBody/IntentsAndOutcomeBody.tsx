@@ -344,7 +344,7 @@ const IntentsAndOutcomeBody: React.FC<IntentsAndOutcomeBodyProps> = (
                 required
                 id="mappedClusterIntent"
                 name="mappedClusterIntent"
-                label="Business Impact"
+                label="Mapped Cluster Intent"
                 type="text"
                 fullWidth
                 multiline

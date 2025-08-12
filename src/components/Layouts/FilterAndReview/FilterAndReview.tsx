@@ -95,7 +95,13 @@ const FilterAndReview: React.FC = () => {
             value={intents}
             onChange={(e) => handleChange(e, 'intent')}
             MenuProps={MenuProps}
-            renderValue={(selected) => selected.join(", ")}
+            displayEmpty
+            renderValue={(selected) => {
+              if (!selected.length) {
+                return <em style={{fontSize: '12px'}}>Choose Intents</em>;
+              }
+              return selected.join(", ");
+            }}
             sx={{
               width: "100%",
               "& .MuiSelect-select": {
@@ -121,7 +127,13 @@ const FilterAndReview: React.FC = () => {
             value={outcomes}
             onChange={(e) => handleChange(e, 'outcome')}
             MenuProps={MenuProps}
-            renderValue={(selected) => selected.join(", ")}
+            displayEmpty
+            renderValue={(selected) => {
+              if (!selected.length) {
+                return <em style={{fontSize: '12px'}}>Choose Outcomes</em>;
+              }
+              return selected.join(", ");
+            }}
             sx={{
               width: "100%",
               "& .MuiSelect-select": {
