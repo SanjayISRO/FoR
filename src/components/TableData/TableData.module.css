@@ -1,0 +1,10 @@
+.button_field {
+    border: 2px solid #1a327a;
+    background-color: transparent;
+    padding: 5px 30px;
+    font-size: 12px;
+    color: #1a327a;
+    margin: 0 15px;
+    font-weight: 500;
+    border-radius: 5px;
+}
