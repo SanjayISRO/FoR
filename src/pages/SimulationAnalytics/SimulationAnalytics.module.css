@@ -1,0 +1,32 @@
+.analytics_container {
+    padding: 20px;
+    width: 95%;
+}
+
+.analytics_container h3 {
+    font-size: 20px;
+    color: #36425d;
+}
+
+
+.analytics_container p {
+    color: #36425d;
+    font-weight: 500;
+}
+
+.kpicard{
+    margin: 10px 0px 40px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.button_container {
+    border: 2px solid #1a327a;
+    background-color: transparent;
+    padding: 5px 30px;
+    font-size: 12px;
+    color: #1a327a;
+    margin: 0 15px;
+    font-weight: 500;
+    border-radius: 5px;
+}

@@ -1,0 +1,18 @@
+.select_component_container {
+    margin: 10px 0 0 0;
+}
+
+.select_component_container label {
+    font-size: 15px;
+    font-weight: 500;
+    color: #1a327a;
+}
+
+.select_component_container select {
+    width: 100%;
+    padding: 3px 0 3px 3px;
+    color: #1a327a;
+    border: 1px solid #1a327a;
+    border-radius: 5px;
+    margin: 10px 0
+}

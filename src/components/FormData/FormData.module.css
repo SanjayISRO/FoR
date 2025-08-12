@@ -1,0 +1,44 @@
+.form_styles {
+    display: flex;
+}
+
+.form_styles div {
+    width: 45%;
+}
+
+.form_styles div:first-child {
+    position: relative;
+}
+
+.form_styles label {
+    font-size: 12px;
+    margin: 0 0 10px 0;
+    color: #000046;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.form_styles input, .form_styles textarea {
+    border: 2px solid #000046;
+    border-radius: 5px;
+    padding: 7px;
+    width: 60%;
+    font-size: 15px;
+}
+
+.form_styles input {
+    width: 85%;
+}
+
+.closeIcon {
+    left: 78%;
+    top: 41px;
+    font-size: 17px !important;
+    font-weight: bolder;
+    position: absolute;
+}
+
+input::placeholder, textarea::placeholder {
+    font-size: 12px;
+    color: #000046;
+  }

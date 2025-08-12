@@ -1,0 +1,49 @@
+.card_container {
+    margin: 40px 0;
+}
+
+.title {
+    font-size: 20px;
+    color: #172a52;
+}
+
+.card {
+    padding: 15px ;
+    border: 1px solid #1a327a;
+    max-width: 30%;
+    min-width: 30%;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+.card input {
+    float: right;
+    cursor: pointer;
+}
+
+.card h5 {
+    font-size: 16px;
+    font-weight: bolder;
+    margin: 20px 0 10px;
+}
+
+.card p {
+    margin-bottom: 0;
+    font-size: 12px;
+}
+
+.card input[type="radio"], input[type="checkbox"] {
+    padding: 10px; /* This won't affect native radio buttons directly */
+    accent-color: #1a327a; /* Modern way to change color */
+  }
+  
+  /* Style when checked */
+  .card input[type="radio"]:checked, input[type="checkbox"]:checked {
+    accent-color: #1a327a; /* Changes the dot color in supported browsers */
+  }
+
+  .card_content_section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
