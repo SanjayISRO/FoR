@@ -329,6 +329,7 @@ const TableData: React.FC = () => {
                         fontSize: "14px",
                         mt: 0.5,
                         padding: "10px",
+                        textTransform: "capitalize",
                       }}
                     />
                   </Box>
