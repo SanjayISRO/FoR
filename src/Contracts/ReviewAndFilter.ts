@@ -8,6 +8,7 @@ export const REVIEW_AND_FILTER_TABLE_DATA = [
       "Reduced Customer Effort", 
       "Enhanced Brand Trust"
     ],
+    "customerSentiment": "Neutral",
     "predictedAgentId": "52a37e5837f160ee6dab4a4e224adda87b7207fbe462c18da5720a709fd0342e",
     "predictedAgentName": "Emily",
     "predictedAgentPersona": "Empathetic Advisor - Specializes in understanding customer frustration, providing reassurance, and offering flexible solutions with supportive communication",

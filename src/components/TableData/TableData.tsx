@@ -28,7 +28,7 @@ interface ConversationData {
   conversationId: string;
   customerIntent: string;
   businessOutcome: string[];
-  details: string;
+  customerSentiment: string;
   predictedAgentPersona: string;
   predictedAgent: string;
   reasonForPrediction?: string;
@@ -109,7 +109,7 @@ const TableData: React.FC = () => {
         //     />
         //   )}
         // </Box>
-        params.value ?  <Chip
+        params.value ? <Chip
           label={params.value.split('-')[0]}
           variant="outlined"
           size="small"
@@ -121,19 +121,19 @@ const TableData: React.FC = () => {
             fontSize: "14px",
           }}
         /> :
-        <Chip
-          label="N/A"
-          variant="outlined"
-          size="small"
-          sx={{
-            backgroundColor: "#172950",
-            borderColor: "#172950",
-            color: "#fff",
-            fontWeight: 500,
-            fontSize: "14px",
-          }}
-        />
-       
+          <Chip
+            label="N/A"
+            variant="outlined"
+            size="small"
+            sx={{
+              backgroundColor: "#172950",
+              borderColor: "#172950",
+              color: "#fff",
+              fontWeight: 500,
+              fontSize: "14px",
+            }}
+          />
+
       ),
     },
     {
@@ -232,9 +232,9 @@ const TableData: React.FC = () => {
             },
             // Alternative: Target all cells in that column
             "& .MuiDataGrid-columnHeader[data-field='businessOutcome'] ~ .MuiDataGrid-cell":
-              {
-                overflowY: "auto",
-              },
+            {
+              overflowY: "auto",
+            },
             "& .MuiDataGrid-columnHeaderTitle": {
               fontWeight: "bold",
               fontSize: "15px",
@@ -262,7 +262,7 @@ const TableData: React.FC = () => {
       >
         <DialogTitle sx={{ fontWeight: "bold" }}>Detailed View</DialogTitle>
         <DialogContent>
-          <div style={{display: 'flex', justifyContent: 'space-between'}}>
+          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
             <SectionContainer widthValue="33%" backgroundColor="#f6f8ff">
               <IntentsAndOutcomeHeader
                 heading="Conversation Details"
@@ -292,7 +292,7 @@ const TableData: React.FC = () => {
                 />
               </Box>
 
-              <Box sx={{mb: 3}}>
+              <Box sx={{ mb: 3 }}>
                 <h4>Business Outcomes</h4>
                 <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
                   {modalData?.businessOutcome?.map((outcome, index) => (
@@ -313,6 +313,29 @@ const TableData: React.FC = () => {
                   ))}
                 </Box>
               </Box>
+
+              {modalData?.customerSentiment && (
+                <Box sx={{ mb: 3 }}>
+                  <h4>Customer Sentiment</h4>
+                  <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
+                    <Chip
+                      label={modalData.customerSentiment}
+                      size="small"
+                      sx={{
+                        backgroundColor: "#172950",
+                        borderColor: "#172950",
+                        color: "#fff",
+                        fontWeight: 500,
+                        fontSize: "14px",
+                        mt: 0.5,
+                        padding: "10px",
+                      }}
+                    />
+                  </Box>
+                </Box>
+              )}
+
+
             </SectionContainer>
 
             <SectionContainer widthValue="33%" backgroundColor="#f6f8ff">
@@ -376,7 +399,7 @@ const TableData: React.FC = () => {
 
                 <p>{modalData?.actualAgentPersonaConfidence}</p>
               </Box>
-              </SectionContainer>
+            </SectionContainer>
           </div>
         </DialogContent>
         <DialogActions>
