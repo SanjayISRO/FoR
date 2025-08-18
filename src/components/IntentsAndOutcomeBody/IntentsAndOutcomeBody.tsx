@@ -78,28 +78,27 @@ const IntentsAndOutcomeBody: React.FC<IntentsAndOutcomeBodyProps> = (
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const formDataObj = new FormData(event.currentTarget);
-    const formJson = Object.fromEntries((formDataObj as any).entries());
 
-    // Create updated data object
-    const updatedData: IntentsAndOutcomeBodyProps = {
-      ...props, // Keep all original props
-      title: formJson.title as string,
-      description: formJson.description as string,
-      priority: formJson.priority as string,
-      confidence: formJson.confidence as string,
-      mappedClusterIntent:
-        (formJson.mappedClusterIntent as string) || props.mappedClusterIntent,
-      kpiDatas: formJson.kpiDatas
-    };
-
-    // Call parent callback if provided
-    if (props.onSubmitChanges) {
-      props.onSubmitChanges(updatedData);
+    // Call parent callback if provided and editData exists
+    if (props.onSubmitChanges && editData) {
+      props.onSubmitChanges(editData);
     }
 
-    console.log("Updated data sent to parent:", updatedData);
     handleClose();
+  };
+
+  const handleOnChangeFormData = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    field: string
+  ): void => {
+    setEditData((prevVal) => {
+      if (!prevVal) return null;
+
+      return {
+        ...prevVal,
+        [field]: event.target.value,
+      };
+    });
   };
 
   const handleMoveUp = () => {
@@ -207,11 +206,7 @@ const IntentsAndOutcomeBody: React.FC<IntentsAndOutcomeBodyProps> = (
         />
       )}
       {props.kpiDatas && (
-        <Note
-          text={props.kpiDatas}
-          alignment="center"
-          widthValue="100%"
-        />
+        <Note text={props.kpiDatas} alignment="center" widthValue="100%" />
       )}
       <section className={styles.metrics}>
         {props.metrics && (
@@ -296,6 +291,7 @@ const IntentsAndOutcomeBody: React.FC<IntentsAndOutcomeBodyProps> = (
               autoComplete="off"
               defaultValue={editData?.title || ""}
               sx={{ margin: "10px 0" }}
+              onChange={(e) => handleOnChangeFormData(e, "title")}
             />
             <TextField
               required
@@ -311,6 +307,7 @@ const IntentsAndOutcomeBody: React.FC<IntentsAndOutcomeBodyProps> = (
               autoComplete="off"
               defaultValue={editData?.description || ""}
               sx={{ margin: "10px 0" }}
+              onChange={(e) => handleOnChangeFormData(e, "description")}
             />
             <TextField
               required
@@ -324,6 +321,7 @@ const IntentsAndOutcomeBody: React.FC<IntentsAndOutcomeBodyProps> = (
               autoComplete="off"
               defaultValue={editData?.priority || ""}
               sx={{ margin: "10px 0", fontWeight: "500" }}
+              onChange={(e) => handleOnChangeFormData(e, "priority")}
             />
             <TextField
               required
@@ -337,6 +335,7 @@ const IntentsAndOutcomeBody: React.FC<IntentsAndOutcomeBodyProps> = (
               autoComplete="off"
               defaultValue={editData?.confidence || ""}
               sx={{ margin: "10px 0" }}
+              onChange={(e) => handleOnChangeFormData(e, "confidence")}
             />
             {editData?.mappedClusterIntent && (
               <TextField
@@ -353,10 +352,13 @@ const IntentsAndOutcomeBody: React.FC<IntentsAndOutcomeBodyProps> = (
                 autoComplete="off"
                 defaultValue={editData.mappedClusterIntent}
                 sx={{ margin: "10px 0" }}
+                onChange={(e) =>
+                  handleOnChangeFormData(e, "mappedClusterIntent")
+                }
               />
             )}
 
-{editData?.kpiDatas && (
+            {editData?.kpiDatas && (
               <TextField
                 margin="dense"
                 required
@@ -371,6 +373,7 @@ const IntentsAndOutcomeBody: React.FC<IntentsAndOutcomeBodyProps> = (
                 autoComplete="off"
                 defaultValue={editData.kpiDatas}
                 sx={{ margin: "10px 0" }}
+                onChange={(e) => handleOnChangeFormData(e, "kpiDatas")}
               />
             )}
           </form>

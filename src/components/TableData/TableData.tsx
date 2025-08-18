@@ -34,9 +34,10 @@ interface ConversationData {
   reasonForPrediction?: string;
   actualAgentPersona?: string;
   actualAgent: string;
-  agentPersonaConfidence: number | string;
+  actualAgentPersonaConfidence: string;
   predictedAgentName: string;
   actualAgentName: string;
+  predictedAgentPersonaConfidence: string
 }
 const TableData: React.FC = () => {
   const [open, setOpen] = useState(false);
@@ -344,7 +345,7 @@ const TableData: React.FC = () => {
               <Box sx={{ mb: 2 }}>
                 <h4>Agent's Persona Confidence</h4>
 
-                <p>{modalData?.agentPersonaConfidence} %</p>
+                <p>{modalData?.predictedAgentPersonaConfidence}</p>
               </Box>
             </SectionContainer>
 
@@ -368,6 +369,12 @@ const TableData: React.FC = () => {
                 <h4>Agent's Persona</h4>
 
                 <p>{modalData?.actualAgentPersona}</p>
+              </Box>
+
+              <Box sx={{ mb: 2 }}>
+                <h4>Agent's Persona Confidence</h4>
+
+                <p>{modalData?.actualAgentPersonaConfidence}</p>
               </Box>
               </SectionContainer>
           </div>
