@@ -1,5 +1,5 @@
 // React dependencies
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 
 // 3rd party dependencies
 import { Box, Slider } from "@mui/material";
@@ -18,22 +18,20 @@ interface SliderComponentProps {
 }
 
 const SliderComponent: React.FC<SliderComponentProps> = ({
-  title,
-  minValue,
   maxValue,
   page,
   stateValue,
   successorText,
 }) => {
   const { dispatch } = useAppContext();
-  const [value, setValue] = useState<number>(0);
+  // const [value, setValue] = useState<number>(0);
 
-  useEffect(() => {
-    setValue(stateValue);
-  });
+  // useEffect(() => {
+  //   setValue(stateValue);
+  // });
 
-  const handleSliderChange = (event: Event, newValue: number): void => {
-    setValue(newValue);
+  const handleSliderChange = (_event: Event, newValue: number): void => {
+    // setValue(newValue);
     // Update global state with slider value
         dispatch({
             type: page === 'dataInputSources' ? "SET_NO_OF_DAYS" : 'SET_THRESHOLD_VALUE',
