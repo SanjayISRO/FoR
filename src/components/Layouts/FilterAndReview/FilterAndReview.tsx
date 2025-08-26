@@ -6,7 +6,6 @@ import {
   Checkbox,
   ListItemText,
   MenuItem,
-  OutlinedInput,
   Select,
   type SelectChangeEvent,
 } from "@mui/material";
