@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react";
 // 3rd party dependencies
 import GroupsIcon from "@mui/icons-material/Groups";
 import AutoGraphIcon from "@mui/icons-material/AutoGraph";
+import EmojiObjectsOutlinedIcon from '@mui/icons-material/EmojiObjectsOutlined';
 
 // Local Dependencies
 import { useAppContext } from "../../../context/AppContext";
@@ -255,9 +256,14 @@ const ReviewAndValidate: React.FC = () => {
               alignItems: 'center',
               gap: '10px'
             }}>
-              <span style={{ fontSize: '24px' }}>💡</span>
               <div>
-                <strong>Reason:</strong> {CUSTOMER_INTENT_DATA.find(intent => intent.id === selectedIntentId)?.reason}
+                 <IntentsAndOutcomeHeader
+                    icon={EmojiObjectsOutlinedIcon}
+                    heading="Reason"
+                  />
+                <div style={{ fontSize: '14px', marginTop: '5px', lineHeight: '1.4' }}>
+                  {CUSTOMER_INTENT_DATA.find(intent => intent.id === selectedIntentId)?.reason}
+                </div>
               </div>
             </div>
           )}
