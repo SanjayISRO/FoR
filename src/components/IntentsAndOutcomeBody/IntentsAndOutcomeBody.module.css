@@ -4,7 +4,8 @@
     flex-direction: row;
     /* justify-content: space-between; */
     align-items: center;
-    height: 200px;
+    min-height: 150px;
+    max-height: fit-content;
 }
 
 .index_text {
@@ -63,8 +64,12 @@
 }
 
 .action_section {
-    width: 225px;
+    width: 60px;
     margin: 0 0 0 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 .button_field {

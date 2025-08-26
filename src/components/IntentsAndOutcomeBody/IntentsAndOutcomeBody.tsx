@@ -16,8 +16,7 @@ import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import TrackChangesIcon from "@mui/icons-material/TrackChanges";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import ReportProblemOutlinedIcon from "@mui/icons-material/ReportProblemOutlined";
-import KeyboardArrowUpOutlinedIcon from "@mui/icons-material/KeyboardArrowUpOutlined";
-import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
+
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 
 //Local dependencies
@@ -47,12 +46,8 @@ export interface IntentsAndOutcomeBodyProps {
   mappedClusterIntent?: string;
   metrics?: CustomerIntentMetrics;
   impact?: BusinessOutcomeImpact;
-  disableDownArrow?: boolean;
-  disableUpArrow?: boolean;
   kpiDatas?: string;
   onSubmitChanges?: (updatedData: IntentsAndOutcomeBodyProps) => void;
-  onMoveUp?: (id: number, isCustomerIntent: boolean) => void;
-  onMoveDown?: (id: number, isCustomerIntent: boolean) => void;
 }
 
 const IntentsAndOutcomeBody: React.FC<IntentsAndOutcomeBodyProps> = (
@@ -62,10 +57,7 @@ const IntentsAndOutcomeBody: React.FC<IntentsAndOutcomeBodyProps> = (
   const [editData, setEditData] = useState<IntentsAndOutcomeBodyProps | null>(
     null
   );
-  const [isAnimating, setIsAnimating] = useState(false);
-  const [animationDirection, setAnimationDirection] = useState<
-    "up" | "down" | null
-  >(null);
+
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -101,52 +93,10 @@ const IntentsAndOutcomeBody: React.FC<IntentsAndOutcomeBodyProps> = (
     });
   };
 
-  const handleMoveUp = () => {
-    if (props.onMoveUp && !isAnimating) {
-      setIsAnimating(true);
-      setAnimationDirection("up");
 
-      // Add a small delay for visual feedback
-      setTimeout(() => {
-        const isCustomerIntent = !!props.mappedClusterIntent || !!props.metrics;
-        props.onMoveUp!(props.id, isCustomerIntent);
-
-        // Reset animation state after move
-        setTimeout(() => {
-          setIsAnimating(false);
-          setAnimationDirection(null);
-        }, 300);
-      }, 150);
-    }
-  };
-
-  const handleMoveDown = () => {
-    if (props.onMoveDown && !isAnimating) {
-      setIsAnimating(true);
-      setAnimationDirection("down");
-
-      // Add a small delay for visual feedback
-      setTimeout(() => {
-        const isCustomerIntent = !!props.mappedClusterIntent || !!props.metrics;
-        props.onMoveDown!(props.id, isCustomerIntent);
-
-        // Reset animation state after move
-        setTimeout(() => {
-          setIsAnimating(false);
-          setAnimationDirection(null);
-        }, 300);
-      }, 150);
-    }
-  };
 
   return (
-    <section
-      className={`${styles.item_container} ${
-        isAnimating ? styles.animating : ""
-      } ${animationDirection === "up" ? styles.moving_up : ""} ${
-        animationDirection === "down" ? styles.moving_down : ""
-      }`}
-    >
+    <section className={styles.item_container}>
       <div className={styles.body_container}>
         <div className={styles.index_text}>{props.index}</div>
         <div className={styles.title_and_description}>
@@ -187,12 +137,6 @@ const IntentsAndOutcomeBody: React.FC<IntentsAndOutcomeBodyProps> = (
           )}
         </div>
         <div className={styles.action_section}>
-          <button onClick={handleMoveDown} disabled={props.disableDownArrow}>
-            <KeyboardArrowDownOutlinedIcon />
-          </button>
-          <button onClick={handleMoveUp} disabled={props.disableUpArrow}>
-            <KeyboardArrowUpOutlinedIcon />
-          </button>
           <button onClick={handleClickOpen}>
             <EditOutlinedIcon />
           </button>

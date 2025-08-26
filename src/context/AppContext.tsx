@@ -5,7 +5,7 @@ import type {
   IBusinessOutcome,
   ICustomerIntent,
 } from "../components/Layouts/ReviewAndValidate/ReviewAndValidate";
-import { BUSINESS_OUTCOME_DATA, CUSTOMER_INTENT_DATA } from "../Contracts/ReviewAndValidate";
+import { CUSTOMER_INTENT_DATA } from "../Contracts/ReviewAndValidate";
 
 const stepperData = {
   dataInputSources: 25,
@@ -30,7 +30,6 @@ interface IAppState {
   routingCategoryList: ICardData[];
   dataInputSourcesList: ICardData[];
   customerIntentList: ICustomerIntent[];
-  businessOutcomeList: IBusinessOutcome[];
 }
 
 // Define action types
@@ -56,16 +55,8 @@ export type AppAction =
       payload: ICustomerIntent[];
     }
   | {
-      type: "SET_BUSINESS_OUTCOMES";
-      payload: IBusinessOutcome[];
-    }
-  | {
       type: "UPDATE_CUSTOMER_INTENTS";
       payload: ICustomerIntent[];
-    }
-  | {
-      type: "UPDATE_BUSINESS_IMPACT";
-      payload: IBusinessOutcome[];
     }
   | { type: "SET_INITIAL_STATE"}
 
@@ -84,7 +75,6 @@ const initialState: IAppState = {
   routingCategoryList: [],
   dataInputSourcesList: [],
   customerIntentList: CUSTOMER_INTENT_DATA,
-  businessOutcomeList: BUSINESS_OUTCOME_DATA,
 };
 
 // Reducer function
@@ -132,12 +122,8 @@ const appReducer = (state: IAppState, action: AppAction): IAppState => {
       return { ...state, dataInputSourcesList: updatedDataInputSources };
     case "SET_INTENTS":
       return { ...state, customerIntentList: action.payload };
-    case "SET_BUSINESS_OUTCOMES":
-      return { ...state, businessOutcomeList: action.payload };
     case "UPDATE_CUSTOMER_INTENTS":
       return { ...state, customerIntentList: action.payload };
-    case "UPDATE_BUSINESS_IMPACT":
-      return { ...state, businessOutcomeList: action.payload };
     case "SET_INITIAL_STATE":
       return { ...initialState }
     default:

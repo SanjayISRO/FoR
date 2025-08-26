@@ -9,6 +9,7 @@
     display: flex;
     justify-content: space-between;
     width: 85%;
+    gap: 20px;
 }
 
 .intents_and_outcomes {
@@ -17,6 +18,8 @@
     border-radius: 5px;
     padding: 15px;
     background: #f4f6f9;
+    align-self: flex-start;
+    height: fit-content;
 }
 
 .filter_block input::placeholder {
