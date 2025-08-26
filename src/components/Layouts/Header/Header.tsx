@@ -2,8 +2,18 @@ import { Button } from "@mui/material";
 import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 
 import styles from "./Header.module.css";
+import { useAppContext } from "../../../context/AppContext";
 
 const Header = () => {
+  const { dispatch } = useAppContext();
+
+  const handleTitleClick = () => {
+    dispatch({
+      type: "SET_STEPPER_VALUE",
+      payload: "dataInputSources",
+    });
+  };
+
   return (
     <>
       <div className={styles.header}>
@@ -14,7 +24,7 @@ const Header = () => {
               fontSize: "50px",
             }}
           />
-          <p className={styles.title}>Genesys Reason Based Routing</p>
+          <p className={styles.title} onClick={handleTitleClick} style={{ cursor: "pointer" }}>Genesys Reason Based Routing</p>
         </div>
 
         <div>

@@ -15,7 +15,7 @@ const AgentPersonas: React.FC = () => {
     {
       field: "sno",
       headerName: "S.No",
-      width: 100,
+      width: 80,
       sortable: false,
       renderCell: (params) => (
         <p>{params.api.getRowIndexRelativeToVisibleRows(params.id) + 1}</p>
@@ -24,7 +24,7 @@ const AgentPersonas: React.FC = () => {
     {
       field: "personaTitle",
       headerName: "Persona Title",
-      width: 400,
+      width: 250,
       sortable: false,
       renderCell: (params) => <p>{params.value}</p>,
     },
@@ -43,7 +43,7 @@ const AgentPersonas: React.FC = () => {
             borderColor: "#172950",
             color: "#fff",
             fontWeight: 500,
-            fontSize: "12px",
+            fontSize: "11px",
             wordWrap: "break-word",
             whiteSpace: "normal",
             height: "auto",
@@ -52,7 +52,7 @@ const AgentPersonas: React.FC = () => {
               whiteSpace: "pre-line",
               wordWrap: "break-word",
               wordBreak: "break-word",
-              padding: "10px",
+              padding: "8px",
             },
           }}
         />
@@ -61,7 +61,7 @@ const AgentPersonas: React.FC = () => {
     {
       field: "agentCount",
       headerName: "Agent(s) Count",
-      width: 400,
+      width: 150,
       sortable: false,
       renderCell: (params) => <p>{params.value}</p>,
     },
@@ -135,6 +135,9 @@ const AgentPersonas: React.FC = () => {
               "& .MuiDataGrid-columnHeaderTitle": {
                 fontWeight: "bold",
                 fontSize: "15px",
+              },
+              "& .MuiDataGrid-columnSeparator--sideRight": {
+                display: "none",
               },
             }}
           />
