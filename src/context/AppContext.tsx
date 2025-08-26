@@ -2,7 +2,6 @@ import React, { createContext, useContext, useReducer } from "react";
 import type { ReactNode } from "react";
 import type { ICardData } from "../components/Card/Card";
 import type {
-  IBusinessOutcome,
   ICustomerIntent,
 } from "../components/Layouts/ReviewAndValidate/ReviewAndValidate";
 import { CUSTOMER_INTENT_DATA } from "../Contracts/ReviewAndValidate";
