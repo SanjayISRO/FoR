@@ -14,7 +14,6 @@ import {
   Divider,
   ListItemText,
   MenuItem,
-  OutlinedInput,
   Select,
   type SelectChangeEvent,
 } from "@mui/material";
@@ -24,12 +23,6 @@ import IntentsAndOutcomeBody, {
 } from "../../IntentsAndOutcomeBody/IntentsAndOutcomeBody";
 import { DROP_DOWN_LIST } from "../../../Contracts/ReviewAndValidate";
 
-interface ICustomerIntentMetrics {
-  interactions: string;
-  retention: string;
-  cost: string;
-}
-
 export interface ICustomerIntent {
   id: number;
   rank: number;
@@ -38,13 +31,6 @@ export interface ICustomerIntent {
   priority: string;
   confidence: string;
   mappedClusterIntent: string;
-  // metrics: ICustomerIntentMetrics;
-}
-
-interface IBusinessOutcomeImpact {
-  amount: string;
-  type: string;
-  urgency: string;
 }
 
 export interface IBusinessOutcome {
@@ -55,7 +41,6 @@ export interface IBusinessOutcome {
   priority: string;
   confidence: string;
   kpiDatas: string;
-  // impact: IBusinessOutcomeImpact;
 }
 
 const ReviewAndValidate: React.FC = () => {

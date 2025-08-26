@@ -172,9 +172,9 @@ const SimulationAnalytics: React.FC = () => {
     },
   ];
 
-  const handleSelectionChange = (selectionModel: any) => {
-    // setSelectedConversationCount(selectionModel.length);
-  };
+  // const handleSelectionChange = (selectionModel: any) => {
+  //    setSelectedConversationCount(selectionModel.length);
+  // };
 
   const handleClick = () => {
     dispatch({

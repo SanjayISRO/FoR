@@ -6,7 +6,33 @@ export const CUSTOMER_INTENT_DATA = [
     "description": "Payment and billing problems are serious issues that can escalate quickly and require specialized handling to resolve financial concerns.",
     "confidence": "85% Confidence",
     "rank": 1,
-    "priority": "Critical"
+    "priority": "Critical",
+    "businessOutcomes": [
+      {
+        rank: 1,
+        title: "Reduced Customer Effort",
+        priority: "High",
+        confidence: "95%"
+      },
+      {
+        rank: 2,
+        title: "Enhanced Brand Trust",
+        priority: "High",
+        confidence: "90%"
+      },
+      {
+        rank: 3,
+        title: "Improved CLV / Conversion Rate",
+        priority: "Medium",
+        confidence: "88%"
+      },
+      {
+        rank: 4,
+        title: "Upsell & Cross-Sell Conversions",
+        priority: "Medium",
+        confidence: "85%"
+      }
+    ]
   },
   {
     "id": 2,
