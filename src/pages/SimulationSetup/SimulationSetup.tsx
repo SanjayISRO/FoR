@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 // 3rd party imports
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 // Local dependencies
 import Stepper from "../../components/Layouts/Stepper/Stepper";
@@ -71,11 +70,7 @@ const SimulationSetup: React.FC = () => {
     <div className={styles.main_container}>
       <Stepper />
       <div className={styles.simulation_page_container}>
-        <section className={styles.heading}>
-          <h5>
-            <KeyboardArrowDownIcon /> How Predictive Routing Works
-          </h5>
-        </section>
+
 
         <section className={styles.data_input_sources}>
           {state.currentPage === "dataInputSources" && <DataInputSources />}
