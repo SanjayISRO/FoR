@@ -13,29 +13,27 @@ const AgentPersonas: React.FC = () => {
   const [agentsCount, setAgentsCount] = useState<number>(0);
   const columns: GridColDef[] = [
     {
-      field: "sno",
-      headerName: "S.No",
-      width: 80,
+      field: "Category",
+      headerName: "Category",
+      width: 160,
       sortable: false,
-      renderCell: (params) => (
-        <p>{params.api.getRowIndexRelativeToVisibleRows(params.id) + 1}</p>
-      ),
+      renderCell: (params) => <p style={{ fontSize: "14px" }}>{params.value}</p>,
     },
     {
-      field: "personaTitle",
-      headerName: "Persona Title",
-      width: 250,
+      field: "Name",
+      headerName: "Name",
+      width: 180,
       sortable: false,
-      renderCell: (params) => <p>{params.value}</p>,
+      renderCell: (params) => <p style={{ fontSize: "14px" }}>{params.value}</p>,
     },
     {
-      field: "categories",
-      headerName: "Categories / Rule(s)",
-      width: 500,
+      field: "Traits",
+      headerName: "Traits",
+      width: 220,
       sortable: false,
       renderCell: (params) => (
         <Chip
-          label={params.value}
+          label={params.value.map((trait: string) => `- ${trait}`).join('\n\n')}
           variant="outlined"
           size="medium"
           sx={{
@@ -43,27 +41,56 @@ const AgentPersonas: React.FC = () => {
             borderColor: "#172950",
             color: "#fff",
             fontWeight: 500,
-            fontSize: "11px",
-            wordWrap: "break-word",
-            whiteSpace: "normal",
+            fontSize: "12px",
             height: "auto",
             minHeight: "28px",
+            width: "100%",
             "& .MuiChip-label": {
               whiteSpace: "pre-line",
               wordWrap: "break-word",
               wordBreak: "break-word",
-              padding: "8px",
+              padding: "10px",
+              lineHeight: "1.3",
             },
           }}
         />
       ),
     },
     {
-      field: "agentCount",
-      headerName: "Agent(s) Count",
-      width: 150,
+      field: "Type",
+      headerName: "Type",
+      width: 120,
       sortable: false,
-      renderCell: (params) => <p>{params.value}</p>,
+      renderCell: (params) => <p style={{ fontSize: "14px" }}>{params.value}</p>,
+    },
+    {
+      field: "Behaviour",
+      headerName: "Behaviour",
+      width: 325,
+      sortable: false,
+      renderCell: (params) => (
+        <div style={{ padding: "8px 4px", width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "flex-start" }}>
+          {Array.isArray(params.value) ? (
+            <div style={{ width: "100%" }}>
+              {params.value.map((item: string, index: number) => (
+                <div key={index} style={{ marginBottom: "6px", fontSize: "14px", lineHeight: "1.3", wordWrap: "break-word", wordBreak: "break-word", whiteSpace: "normal" }}>
+                  • {item}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p style={{ fontSize: "12px", lineHeight: "1.4", margin: 0, wordWrap: "break-word", wordBreak: "break-word", whiteSpace: "normal", textAlign: "left", width: "100%" }}>{params.value}</p>
+          )}
+        </div>
+      ),
+    },
+    {
+      field: "Count",
+      headerName: "Count",
+      headerAlign: "center",
+      width: 130,
+      sortable: false,
+      renderCell: (params) => <p style={{ fontSize: "13px", textAlign: "center" }}>{Array.isArray(params.value) ? params.value.length : params.value}</p>,
     },
   ];
 
@@ -73,7 +100,7 @@ const AgentPersonas: React.FC = () => {
     let count = 0;
 
     agentPersonaData.forEach((data) => {
-      count = count + data.agentCount;
+      count = count + (Array.isArray(data.Count) ? data.Count.length : data.Count);
     });
 
     setAgentsCount(count);
@@ -82,7 +109,7 @@ const AgentPersonas: React.FC = () => {
   return (
     <>
       <h4 style={{ fontSize: "20px", marginBottom: "20px" }}>
-        Agent Persona Details
+        Agent Personas
       </h4>
       <div>
         <div style={{ display: "flex" }}>
@@ -105,7 +132,7 @@ const AgentPersonas: React.FC = () => {
             checkboxSelection
             // onRowSelectionModelChange={(e) => handleSelectionChange(e)}
             pageSizeOptions={[10, 20, 30]}
-            rowHeight={150}
+            rowHeight={220}
             initialState={{
               pagination: {
                 paginationModel: { page: 0, pageSize: 10 },

@@ -22,7 +22,7 @@ import IntentsAndOutcomeHeader from "../../IntentsAndOutcomeHeader/IntentsAndOut
 import IntentsAndOutcomeBody, {
   type IntentsAndOutcomeBodyProps,
 } from "../../IntentsAndOutcomeBody/IntentsAndOutcomeBody";
-import { DROP_DOWN_LIST, CUSTOMER_INTENT_DATA } from "../../../Contracts/ReviewAndValidate";
+import { DROP_DOWN_LIST } from "../../../Contracts/ReviewAndValidate";
 
 export interface ICustomerIntent {
   id: number;
@@ -48,7 +48,10 @@ const ReviewAndValidate: React.FC = () => {
   const { state, dispatch } = useAppContext();
   const [selectedData, setSelectedData] = useState<string[]>([]);
   const [selectedIntentId, setSelectedIntentId] = useState<number | null>(null);
+  const [selectedIntentData, setSelectedIntentData] = useState<any>(null);
   const [displayedBusinessOutcomes, setDisplayedBusinessOutcomes] = useState<any[]>([]);
+  const [customerIntentData, setCustomerIntentData] = useState<any[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
   const businessOutcomeRef = useRef<HTMLElement>(null);
 
   const ITEM_HEIGHT = 48;
@@ -99,19 +102,38 @@ const ReviewAndValidate: React.FC = () => {
     );
   };
 
-  // Auto-select first intent on component mount
+  // Fetch data from API on component mount
   useEffect(() => {
-    if (CUSTOMER_INTENT_DATA.length > 0) {
-      const firstIntent = CUSTOMER_INTENT_DATA[0];
-      setSelectedIntentId(firstIntent.id);
-      setDisplayedBusinessOutcomes(firstIntent.businessOutcomes);
-    }
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch('https://wfwmjznqoi.execute-api.us-east-1.amazonaws.com/business_outcome/output');
+        const data = await response.json();
+        console.log('API fetched');
+        setCustomerIntentData(data);
+        
+        // Auto-select first intent
+        if (data.length > 0) {
+          const firstIntent = data[0];
+          setSelectedIntentId(firstIntent.id);
+          setSelectedIntentData(firstIntent);
+          setDisplayedBusinessOutcomes(firstIntent.businessOutcomes);
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    fetchData();
   }, []);
 
   const handleIntentClick = (intentId: number) => {
     setSelectedIntentId(intentId);
-    const selectedIntent = CUSTOMER_INTENT_DATA.find(intent => intent.id === intentId);
+    const selectedIntent = customerIntentData.find(intent => intent.id === intentId);
     if (selectedIntent) {
+      setSelectedIntentData(selectedIntent);
       setDisplayedBusinessOutcomes(selectedIntent.businessOutcomes);
       // Auto-scroll to business outcomes section
       setTimeout(() => {
@@ -178,7 +200,12 @@ const ReviewAndValidate: React.FC = () => {
             Click on any intent to view its business outcomes →
           </div>
           <Divider variant="middle" component="div" sx={{ margin: "10px 0" }} />
-          {CUSTOMER_INTENT_DATA.map((intents, index: number) => (
+          {loading ? (
+            <div style={{ padding: '20px', textAlign: 'center', color: '#666' }}>
+              Loading customer intents...
+            </div>
+          ) : (
+            customerIntentData.map((intents, index: number) => (
             <div 
               key={`intents_${index}`}
               onClick={() => handleIntentClick(intents.id)}
@@ -218,16 +245,17 @@ const ReviewAndValidate: React.FC = () => {
                 onSubmitChanges={handleFormSubmit}
               />
             </div>
-          ))}
+          ))
+          )}
         </section>
 
         <section className={styles.intents_and_outcomes} ref={businessOutcomeRef}>
           <IntentsAndOutcomeHeader
             icon={AutoGraphIcon}
-            heading={selectedIntentId ? `Business Outcome Priority Ranking for ${CUSTOMER_INTENT_DATA.find(intent => intent.id === selectedIntentId)?.title}` : "Business Outcome Priority Ranking"}
+            heading={selectedIntentData ? `Business Outcome Priority Ranking for ${selectedIntentData.title}` : "Business Outcome Priority Ranking"}
           />
           <div style={{ fontSize: '12px', color: '#666', marginBottom: '10px' }}>
-            {selectedIntentId ? `Showing outcomes for: ${CUSTOMER_INTENT_DATA.find(intent => intent.id === selectedIntentId)?.title}` : 'Select an intent to view outcomes'}
+            {selectedIntentData ? `Showing outcomes for: ${selectedIntentData.title}` : 'Select an intent to view outcomes'}
           </div>
           <Divider variant="middle" component="div" sx={{ margin: "10px 0" }} />
 
@@ -262,7 +290,7 @@ const ReviewAndValidate: React.FC = () => {
                     heading="Reason"
                   />
                 <div style={{ fontSize: '14px', marginTop: '5px', lineHeight: '1.4' }}>
-                  {CUSTOMER_INTENT_DATA.find(intent => intent.id === selectedIntentId)?.reason}
+                  {selectedIntentData?.reason}
                 </div>
               </div>
             </div>
