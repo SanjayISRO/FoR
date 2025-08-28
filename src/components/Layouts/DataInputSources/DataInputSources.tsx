@@ -40,7 +40,7 @@ const DataInputSources: React.FC = () => {
     <>
       <FormData />
       <CardSection
-        title="Select Predective Routing Category"
+        title="Select Conversation Data"
         cardData={state.routingCategoryList}
         action="UPDATE_ROUTING_CATEGORY"
         onChange={handleChange}
