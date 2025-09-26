@@ -29,35 +29,49 @@ const Stepper: React.FC = () => {
           count={1}
           optionalMessage="Optional Message"
           top={60}
-          icon={state.currentProgress > 20 ? faCircleCheck : faCircleHalfStroke}
+          icon={state.currentProgress > 25 ? faCircleCheck : faCircleHalfStroke}
         />
         <StepperStage
-          title="Filter & Review"
+          title="Goals & KPI's"
           count={2}
           optionalMessage="Optional Message"
           top={165}
-          icon={state.currentProgress < 40 ? faSpinner : state.currentProgress > 60 ? faCircleCheck : faCircleHalfStroke}
+          icon={state.currentProgress < 35 ? faSpinner : state.currentProgress > 35 ? faCircleCheck : faCircleHalfStroke}
         />
         <StepperStage
-          title="Agent Personas"
+          title="Intent taxonomy"
           count={3}
           optionalMessage="Optional Message"
           top={275}
-          icon={state.currentProgress < 60 ? faSpinner : state.currentProgress > 80 ? faCircleCheck : faCircleHalfStroke}
+          icon={state.currentProgress < 45 ? faSpinner : state.currentProgress > 45 ? faCircleCheck : faCircleHalfStroke}
         />
         <StepperStage
-          title="Review & Validate"
+          title="Agent Personas"
           count={4}
           optionalMessage="Optional Message"
           top={395}
-          icon={state.currentProgress < 80 ? faSpinner : state.currentProgress > 85 ? faCircleCheck : faCircleHalfStroke}
+          icon={state.currentProgress < 55 ? faSpinner : state.currentProgress > 55 ? faCircleCheck : faCircleHalfStroke}
         />
         <StepperStage
-          title="Configure Simulation"
+          title="Filter & Review"
           count={5}
           optionalMessage="Optional Message"
           top={510}
-          icon={state.currentProgress < 100 ? faSpinner : state.currentProgress > 100 ? faCircleCheck : faCircleHalfStroke}
+          icon={state.currentProgress < 65 ? faSpinner : state.currentProgress > 65 ? faCircleCheck : faCircleHalfStroke}
+        />
+        <StepperStage
+          title="Review & Validate"
+          count={6}
+          optionalMessage="Optional Message"
+          top={625}
+          icon={state.currentProgress < 85 ? faSpinner : state.currentProgress > 85 ? faCircleCheck : faCircleHalfStroke}
+        />
+        <StepperStage
+          title="Configure Simulation"
+          count={7}
+          optionalMessage="Optional Message"
+          top={740}
+          icon={state.currentProgress < 100 ? faSpinner : faCircleCheck}
         />
       </div>
     </Box>

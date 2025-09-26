@@ -8,8 +8,10 @@ import { CUSTOMER_INTENT_DATA } from "../Contracts/ReviewAndValidate";
 
 const stepperData = {
   dataInputSources: 25,
-  filterAndReview: 45,
-  agentPersonas: 65,
+  goalsAndKPIs: 35,
+  featureTaxonomy: 45,
+  agentPersonas: 55,
+  filterAndReview: 65,
   reviewAndValidate: 85,
   configureSimulation: 100,
 };

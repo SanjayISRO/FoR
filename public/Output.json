@@ -1,0 +1,188 @@
+{
+    "clusters": [
+        {
+            "cluster_name": "Returns & Refunds",
+            "No_of_conversations": 42,
+            "features": {
+                "segment": {
+                    "B2C": 42,
+                    "B2B": 0
+                },
+                "revenue_potential": {
+                    "low": 24,
+                    "medium": 18,
+                    "high": 0
+                },
+                "urgency": {
+                    "low": 18,
+                    "medium": 20,
+                    "high": 4
+                },
+                "complexity": {
+                    "low": 20,
+                    "medium": 16,
+                    "high": 6
+                },
+                "risk_compliance": {
+                    "low": 16,
+                    "medium": 20,
+                    "high": 6
+                },
+                "customer_effort": {
+                    "low": 25,
+                    "medium": 13,
+                    "high": 4
+                }
+            }
+        },
+        {
+            "cluster_name": "Order Status & Tracking",
+            "No_of_conversations": 52,
+            "features": {
+                "segment": {
+                    "B2C": 52,
+                    "B2B": 0
+                },
+                "revenue_potential": {
+                    "low": 33,
+                    "medium": 17,
+                    "high": 2
+                },
+                "urgency": {
+                    "low": 16,
+                    "medium": 29,
+                    "high": 7
+                },
+                "complexity": {
+                    "low": 29,
+                    "medium": 19,
+                    "high": 4
+                },
+                "risk_compliance": {
+                    "low": 28,
+                    "medium": 16,
+                    "high": 8
+                },
+                "customer_effort": {
+                    "low": 32,
+                    "medium": 16,
+                    "high": 4
+                }
+            }
+        },
+        {
+            "cluster_name": "Promotions & Pricing",
+            "No_of_conversations": 44,
+            "features": {
+                "segment": {
+                    "B2C": 42,
+                    "B2B": 2
+                },
+                "revenue_potential": {
+                    "low": 23,
+                    "medium": 13,
+                    "high": 8
+                },
+                "urgency": {
+                    "low": 24,
+                    "medium": 15,
+                    "high": 5
+                },
+                "complexity": {
+                    "low": 24,
+                    "medium": 16,
+                    "high": 4
+                },
+                "risk_compliance": {
+                    "low": 18,
+                    "medium": 20,
+                    "high": 6
+                },
+                "customer_effort": {
+                    "low": 25,
+                    "medium": 13,
+                    "high": 6
+                }
+            }
+        },
+        {
+            "cluster_name": "Technical & Website Issues",
+            "No_of_conversations": 37,
+            "features": {
+                "segment": {
+                    "B2C": 37,
+                    "B2B": 0
+                },
+                "revenue_potential": {
+                    "low": 12,
+                    "medium": 13,
+                    "high": 12
+                },
+                "urgency": {
+                    "low": 11,
+                    "medium": 21,
+                    "high": 5
+                },
+                "complexity": {
+                    "low": 17,
+                    "medium": 15,
+                    "high": 5
+                },
+                "risk_compliance": {
+                    "low": 19,
+                    "medium": 9,
+                    "high": 9
+                },
+                "customer_effort": {
+                    "low": 16,
+                    "medium": 11,
+                    "high": 10
+                }
+            }
+        },
+        {
+            "cluster_name": "Product Information & Support",
+            "No_of_conversations": 34,
+            "features": {
+                "segment": {
+                    "B2C": 26,
+                    "B2B": 8
+                },
+                "revenue_potential": {
+                    "low": 20,
+                    "medium": 13,
+                    "high": 1
+                },
+                "urgency": {
+                    "low": 12,
+                    "medium": 16,
+                    "high": 6
+                },
+                "complexity": {
+                    "low": 28,
+                    "medium": 4,
+                    "high": 2
+                },
+                "risk_compliance": {
+                    "low": 27,
+                    "medium": 6,
+                    "high": 1
+                },
+                "customer_effort": {
+                    "low": 23,
+                    "medium": 9,
+                    "high": 2
+                }
+            }
+        }
+    ],
+    "stage": {
+        "awareness": 27,
+        "evaluation": 13,
+        "selection": 5,
+        "checkout": 26,
+        "post_sale": 92,
+        "return_recovery": 32,
+        "cancellation": 14
+    }
+}

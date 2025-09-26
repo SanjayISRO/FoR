@@ -1,0 +1,109 @@
+{
+  "ContactCenterGoals": [
+    {
+      "goal": "Increase First-Contact Resolution (FCR)",
+      "leadingKPIs": [
+        "Repeat Contact Rate",
+        "Escalation Rate",
+        "QA pass on “resolution at first attempt”"
+      ],
+      "laggingKPIs": [
+        "FCR % (final resolution on first contact)",
+        "CSAT/NPS on resolved tickets",
+        "Customer Retention "
+      ]
+    },
+    {
+      "goal": "Reduce Customer Effort (CES)",
+      "leadingKPIs": [
+        "Number of transfers per contact",
+        "Average touches/clicks to resolve",
+        "Time-to-resolution"
+      ],
+      "laggingKPIs": [
+        "Customer Effort Score (CES)",
+        "Repeat Purchase Likelihood",
+        "Churn / Retention Rate"
+      ]
+    },
+    {
+      "goal": "Optimize Average Handle Time (AHT)",
+      "leadingKPIs": [
+        "Talk time, hold time, wrap-up time by channel",
+        "% adherence to scripts/tools",
+        "Self-service deflection %"
+      ],
+      "laggingKPIs": [
+        "AHT (minutes) overall",
+        "Cost per Contact",
+        "CSAT (if AHT balanced with FCR)"
+      ]
+    },
+    {
+      "goal": "Increase Sales Conversion & AOV from Assisted Channels",
+      "leadingKPIs": [
+        "Assisted conversion attempts (# opportunities created)",
+        "Attach rate / Upsell rate",
+        "Agent product knowledge score"
+      ],
+      "laggingKPIs": [
+        "Conversion Rate % (assisted)",
+        "Average Order Value (AOV) from assisted channels",
+        "Revenue per Contact / Revenue per Agent Hour"
+      ]
+    },
+    {
+      "goal": "Compress Return-to-Refund / Exchange Cycle Time",
+      "leadingKPIs": [
+        "Warehouse/processing turnaround time",
+        "% refunds/exchanges initiated within SLA",
+        "Contact resolution time for return queries"
+      ],
+      "laggingKPIs": [
+        "Avg Return-to-Refund Time",
+        "% Refunds/Exchanges completed within SLA",
+        "Customer Trust / CSAT on returns"
+      ]
+    },
+    {
+      "goal": "Reduce Cost-to-Serve while Preserving CX",
+      "leadingKPIs": [
+        "Agent utilization/occupancy rate",
+        "Automation & self-service success rate",
+        "Contact per Order ratio"
+      ],
+      "laggingKPIs": [
+        "Cost per Contact",
+        "Cost-to-Serve by channel",
+        "EBITDA margin impact"
+      ]
+    },
+    {
+      "goal": "Lift Quality & Contact Accuracy (Policy/Compliance Right-First-Time)",
+      "leadingKPIs": [
+        "QA Checklist Pass %",
+        "Error/Exception rate per agent",
+        "Training completion & policy adherence"
+      ],
+      "laggingKPIs": [
+        "Policy Accuracy % (Right-First-Time)",
+        "Compliance Incident Rate",
+        "Escalation/Dispute Rate"
+      ]
+    },
+    {
+      "goal": "Reduce Refund Costs & Increase Sales Recovery",
+      "leadingKPIs": [
+        "% Exchanges offered vs Refunds",
+        "Recovery offers accepted",
+        "Fraud flag rate in returns"
+      ],
+      "laggingKPIs": [
+        "Refund Rate %",
+        "Refund Cost per Return",
+        "Sales Recovery % (returns converted to exchange/new order)",
+        "Recovery Rate (% value salvaged)"
+      ]
+    }
+  ]
+}

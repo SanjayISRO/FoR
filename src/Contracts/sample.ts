@@ -1,259 +1,289 @@
-// Sample data structure combining customer intents and their business outcomes
-// Based on the format requested and the data in ReviewAndValidate.ts
-
-export const SAMPLE_INTENT_DATA = [
+export const REVIEW_AND_FILTER_TABLE_DATA = [
   {
-    id: 1,
-    title: "Order Status Inquiry",
-    mappedClusterIntent: "Order Tracking & Delivery",
-    rank: 1,
-    priority: "Important",
-    description: "Direct match to tracking orders, which is a core example in the Order Tracking & Delivery cluster.",
-    confidence: "98% Confidence",
-    businessOutcomes: [
-      { rank: 1, title: "Reduced Customer Effort", priority: "High", confidence: "95%" },
-      { rank: 2, title: "Enhanced Brand Trust", priority: "High", confidence: "90%" },
-      { rank: 3, title: "Improved CLV / Conversion Rate", priority: "Medium", confidence: "88%" },
-      { rank: 4, title: "Upsell & Cross-Sell Conversions", priority: "Medium", confidence: "85%" }
+    "id": 1,
+    "conversationId": "8041d2ba-c0b3-4fe7-a4f6-81d30cc8e339",
+    "primary_intent": "Product Information & Support",
+    "sub_intents": [
+      "BPA free materials",
+      "Non-toxic backpacks",
+      "Material safety concerns"
     ],
-    reason: "Quick order updates reduce customer effort and build trust."
+    "segment": "B2C",
+    "revenue_potential": "Low",
+    "urgency": "low",
+    "stage": "post-sale",
+    "complexity": "Low",
+    "risk_compliance": "High",
+    "customer_effort": "High",
+    "sentiment": "neutral",
+    "emotion": [],
+    "PredictedAgentId": "aba7a54f18775fed4ea7c8a0e241be415faee19b78c6767e86cf0e856b74e0c7",
+    "PredictedAgentpersona": "Product Information & Support",
+    "PredictedAgentpersona_rank": 2,
+    "PredictedAgentoverall_rank": 24,
+    "PredictedAgentpersona_score": 0.9869449034881781,
+    "reason": "Strong product knowledge with higher volume experience, manages urgent inquiries effectively",
+    "ActualAgentId": "a64030a5b0a55036ae70f834d5f8e5f1527b367d23083de83d0b54207a6f35c2",
+    "ActualAgentpersona": "Product Information & Support",
+    "ActualAgentpersona_score": 0.8831243377834702,
+    "ActualAgentpersona_rank": 9
   },
   {
-    id: 2,
-    title: "Missing or Incomplete Order",
-    mappedClusterIntent: "Complaints & Escalations",
-    rank: 2,
-    priority: "Critical",
-    description: "Missing or incomplete orders represent service failures that require immediate attention and potential escalation to resolve customer dissatisfaction.",
-    confidence: "90% Confidence",
-    businessOutcomes: [
-      { rank: 1, title: "Reduced Customer Effort", priority: "High", confidence: "98%" },
-      { rank: 2, title: "Recovered Sales / Lower Return Rates", priority: "High", confidence: "95%" },
-      { rank: 3, title: "Enhanced Brand Trust", priority: "High", confidence: "92%" },
-      { rank: 4, title: "Improved Product Quality Feedback Loop", priority: "Medium", confidence: "87%" }
+    "id": 2,
+    "conversationId": "2ff70eca-bc0a-4f20-83be-407d6bd07504",
+    "primary_intent": "Return Label Request",
+    "sub_intents": [
+      "Return process",
+      "Shipping label",
+      "Order return"
     ],
-    reason: "Swift resolution retains customers and recovers lost sales."
+    "segment": "B2C",
+    "revenue_potential": "Low",
+    "urgency": "low",
+    "stage": "return_recovery",
+    "complexity": "Low",
+    "risk_compliance": "Low",
+    "customer_effort": "Medium",
+    "sentiment": "positive",
+    "emotion": ["Admiration"],
+    "PredictedAgentId": "9ff3b0761717d4d3585d01a6b2dc1a9296d9bd0b3d826df927e31edd6dcf12af",
+    "PredictedAgentpersona": "Returns & Refunds",
+    "PredictedAgentpersona_rank": 4,
+    "PredictedAgentoverall_rank": 17,
+    "PredictedAgentpersona_score": 1.0412382612249582,
+    "reason": "Handles urgent, high revenue potential returns with straightforward processing requirements",
+    "ActualAgentId": "9ff3b0761717d4d3585d01a6b2dc1a9296d9bd0b3d826df927e31edd6dcf12af",
+    "ActualAgentpersona": "Returns & Refunds",
+    "ActualAgentpersona_score": 1.0412382612249582,
+    "ActualAgentpersona_rank": 4
   },
   {
-    id: 3,
-    title: "Request Return or Refund",
-    mappedClusterIntent: "Returns & Exchanges",
-    rank: 3,
-    priority: "Important",
-    description: "Exact match to the Returns & Exchanges cluster which handles return requests as a primary example intent.",
-    confidence: "100% Confidence",
-    businessOutcomes: [
-      { rank: 1, title: "Recovered Sales / Lower Return Rates", priority: "High", confidence: "96%" },
-      { rank: 2, title: "Enhanced Brand Trust", priority: "High", confidence: "93%" },
-      { rank: 3, title: "Improved Product Quality Feedback Loop", priority: "Medium", confidence: "89%" },
-      { rank: 4, title: "Better Product Fit & Usage Guidance", priority: "Medium", confidence: "85%" }
+    "id": 3,
+    "conversationId": "7f954438-a769-4920-b9b4-ac555f9cec5d",
+    "primary_intent": "Warranty Claim",
+    "sub_intents": [
+      "Broken zipper",
+      "Product repair",
+      "Warranty process"
     ],
-    reason: "Fair return handling protects revenue and builds loyalty."
+    "segment": "B2C",
+    "revenue_potential": "Medium",
+    "urgency": "high",
+    "stage": "post-sale",
+    "complexity": "Medium",
+    "risk_compliance": "Low",
+    "customer_effort": "High",
+    "sentiment": "negative",
+    "emotion": ["Frustration", "Disappointment"],
+    "PredictedAgentId": "9ff3b0761717d4d3585d01a6b2dc1a9296d9bd0b3d826df927e31edd6dcf12af",
+    "PredictedAgentpersona": "Returns & Refunds",
+    "PredictedAgentpersona_rank": 4,
+    "PredictedAgentoverall_rank": 17,
+    "PredictedAgentpersona_score": 1.0412382612249582,
+    "reason": "Handles urgent, high revenue potential returns with straightforward processing requirements",
+    "ActualAgentId": "e9de0bd7ba865b5b5e5b55731d2d7819ea8e070fe0d0c45f04cf8959cc9ed83b",
+    "ActualAgentpersona": "Returns & Refunds",
+    "ActualAgentpersona_score": 1.0147532609161514,
+    "ActualAgentpersona_rank": 5
   },
   {
-    id: 4,
-    title: "Shipping Address Correction",
-    mappedClusterIntent: "Order Tracking & Delivery",
-    rank: 4,
-    priority: "Critical",
-    description: "Address corrections are delivery-related issues that fall under shipping and delivery management.",
-    confidence: "85% Confidence",
-    businessOutcomes: [
-      { rank: 1, title: "Reduced Customer Effort", priority: "High", confidence: "97%" },
-      { rank: 2, title: "Recovered Sales / Lower Return Rates", priority: "High", confidence: "94%" },
-      { rank: 3, title: "Enhanced Brand Trust", priority: "Medium", confidence: "90%" },
-      { rank: 4, title: "Market Expansion Clues", priority: "Low", confidence: "86%" }
+    "id": 4,
+    "conversationId": "67aa0c1e-def9-45ce-861e-5aa2d10fd0e1",
+    "primary_intent": "Promo Code Request",
+    "sub_intents": [
+      "New buyer discount",
+      "Lost discount code"
     ],
-    reason: "Fast address fixes prevent delivery issues and boost trust."
+    "segment": "B2C",
+    "revenue_potential": "Medium",
+    "urgency": "low",
+    "stage": "checkout",
+    "complexity": "Low",
+    "risk_compliance": "Medium",
+    "customer_effort": "Medium",
+    "sentiment": "Positive",
+    "emotion": ["Gratitude"],
+    "PredictedAgentId": "cd0c62c02296d0bc77630e68e043044471cf6eb7c88202734db15088c45a9e8a",
+    "PredictedAgentpersona": "Promotions & Pricing",
+    "PredictedAgentpersona_rank": 3,
+    "PredictedAgentoverall_rank": 19,
+    "PredictedAgentpersona_score": 1.0207672717563434,
+    "reason": "High revenue potential specialist with strong discount focus, manages high customer effort cases",
+    "ActualAgentId": "01fb4f9fccf842687a55e4f691639c6a0fda78112e3adf2e61cec1e5b1b686ab",
+    "ActualAgentpersona": "Promotions & Pricing",
+    "ActualAgentpersona_score": 0.8292042499146156,
+    "ActualAgentpersona_rank": 8
   },
   {
-    id: 5,
-    title: "Product Warranty Claim",
-    mappedClusterIntent: "Warranty & Repairs",
-    rank: 5,
-    priority: "Important",
-    description: "Direct match to the Warranty & Repairs cluster which specifically handles warranty-related inquiries.",
-    confidence: "100% Confidence",
-    businessOutcomes: [
-      { rank: 1, title: "Enhanced Brand Trust", priority: "High", confidence: "96%" },
-      { rank: 2, title: "Improved Product Quality Feedback Loop", priority: "High", confidence: "94%" },
-      { rank: 3, title: "Improved CLV / Conversion Rate", priority: "Medium", confidence: "88%" },
-      { rank: 4, title: "Recovered Sales / Lower Return Rates", priority: "Medium", confidence: "87%" }
+    "id": 5,
+    "conversationId": "3e199296-8787-4f5d-87a2-ac9e84dea6d1",
+    "primary_intent": "Return Label Request",
+    "sub_intents": [
+      "Order lookup",
+      "Return process",
+      "Shipping label"
     ],
-    reason: "Warranty support builds trust and drives product improvement."
+    "segment": "B2C",
+    "revenue_potential": "Low",
+    "urgency": "low",
+    "stage": "return_recovery",
+    "complexity": "Medium",
+    "risk_compliance": "Low",
+    "customer_effort": "Medium",
+    "sentiment": "Neutral",
+    "emotion": [],
+    "PredictedAgentId": "9ff3b0761717d4d3585d01a6b2dc1a9296d9bd0b3d826df927e31edd6dcf12af",
+    "PredictedAgentpersona": "Returns & Refunds",
+    "PredictedAgentpersona_rank": 4,
+    "PredictedAgentoverall_rank": 17,
+    "PredictedAgentpersona_score": 1.0412382612249582,
+    "reason": "Handles urgent, high revenue potential returns with straightforward processing requirements",
+    "ActualAgentId": "aba7a54f18775fed4ea7c8a0e241be415faee19b78c6767e86cf0e856b74e0c7",
+    "ActualAgentpersona": "Product Information & Support",
+    "ActualAgentpersona_score": 0.9869449034881781,
+    "ActualAgentpersona_rank": 8
   },
   {
-    id: 6,
-    title: "Promo Code or Discount Issues",
-    mappedClusterIntent: "Loyalty Program & Offers",
-    rank: 6,
-    priority: "Important",
-    description: "Promotional codes and discounts are part of offers and promotional programs managed under loyalty and offers.",
-    confidence: "88% Confidence",
-    businessOutcomes: [
-      { rank: 1, title: "Recovered Sales / Lower Return Rates", priority: "High", confidence: "95%" },
-      { rank: 2, title: "Loyalty Program Growth", priority: "High", confidence: "92%" },
-      { rank: 3, title: "Enhanced Brand Trust", priority: "Medium", confidence: "89%" },
-      { rank: 4, title: "Campaign Effectiveness", priority: "Medium", confidence: "86%" }
+    "id": 6,
+    "conversationId": "c022e010-9284-4c95-82d9-68149c7a2b30",
+     "primary_intent": "Return Label Request",
+    "sub_intents": [
+      "Lost return label",
+      "Wrong color order",
+      "Return process"
     ],
-    reason: "Resolving promo issues saves sales and grows loyalty programs."
+    "segment": "B2C",
+    "revenue_potential": "Medium",
+    "urgency": "low",
+    "stage": "return_recovery",
+    "complexity": "Low",
+    "risk_compliance": "Low",
+    "customer_effort": "Medium",
+    "sentiment": "Positive",
+    "emotion": ["Gratitude"],
+    "PredictedAgentId": "510bcec108734240c69276bc42820b7c81690a6177fed4ebff12a8ee31b62c81",
+    "PredictedAgentpersona": "Returns & Refunds",
+    "PredictedAgentpersona_rank": 1,
+    "PredictedAgentoverall_rank": 6,
+    "PredictedAgentpersona_score": 1.1675036169183548,
+    "reason": "Top return specialist with perfect scores across all attributes except customer effort, excellent technical handling",
+    "ActualAgentId": "510bcec108734240c69276bc42820b7c81690a6177fed4ebff12a8ee31b62c81",
+    "ActualAgentpersona": "Returns & Refunds",
+    "ActualAgentpersona_score": 1.1675036169183548,
+    "ActualAgentpersona_rank": 1
   },
   {
-    id: 7,
-    title: "Cancel Order",
-    mappedClusterIntent: "Order Tracking & Delivery",
-    rank: 7,
-    priority: "Critical",
-    description: "Order cancellation is part of order management and delivery processes, requiring intervention in the fulfillment pipeline.",
-    confidence: "82% Confidence",
-    businessOutcomes: [
-      { rank: 1, title: "Recovered Sales / Lower Return Rates", priority: "High", confidence: "93%" },
-      { rank: 2, title: "Enhanced Brand Trust", priority: "High", confidence: "91%" },
-      { rank: 3, title: "Upsell & Cross-Sell Conversions", priority: "Medium", confidence: "87%" },
-      { rank: 4, title: "Improved Product Quality Feedback Loop", priority: "Medium", confidence: "85%" }
+    "id": 7,
+    "conversationId": "31deab69-2cb9-42ec-8034-60fdb00108ad",
+    "primary_intent": "First Responder Discount",
+    "sub_intents": [
+      "Discount application",
+      "Promo code request"
     ],
-    reason: "Problem-solving prevents cancellations and creates upsell chances."
+    "segment": "B2C",
+    "revenue_potential": "Low",
+    "urgency": "low",
+    "stage": "awareness",
+    "complexity": "Low",
+    "risk_compliance": "Medium",
+    "customer_effort": "Medium",
+    "sentiment": "positive",
+    "emotion": ["Gratitude"],
+    "PredictedAgentId": "cd0c62c02296d0bc77630e68e043044471cf6eb7c88202734db15088c45a9e8a",
+    "PredictedAgentpersona": "Promotions & Pricing",
+    "PredictedAgentpersona_rank": 3,
+    "PredictedAgentoverall_rank": 19,
+    "PredictedAgentpersona_score": 1.0207672717563434,
+    "reason": "High revenue potential specialist with strong discount focus, manages high customer effort cases",
+    "ActualAgentId": "227a0584fc3816c9b3de4c7f45e33276bc934eeb99bae8c474b3d2dfc0b368f5",
+    "ActualAgentpersona": "Promotions & Pricing",
+    "ActualAgentpersona_score":  0.829446527626226,
+    "ActualAgentpersona_rank": 7
   },
   {
-    id: 8,
-    title: "Order Modification Request",
-    mappedClusterIntent: "Order Tracking & Delivery",
-    rank: 8,
-    priority: "Critical",
-    description: "Modifying orders involves tracking and managing delivery processes to implement changes before fulfillment.",
-    confidence: "80% Confidence",
-    businessOutcomes: [
-      { rank: 1, title: "Reduced Customer Effort", priority: "High", confidence: "96%" },
-      { rank: 2, title: "Recovered Sales / Lower Return Rates", priority: "High", confidence: "94%" },
-      { rank: 3, title: "Upsell & Cross-Sell Conversions", priority: "Medium", confidence: "88%" },
-      { rank: 4, title: "Enhanced Brand Trust", priority: "Medium", confidence: "86%" }
+    "id": 8,
+    "conversationId": "13542f16-c2ff-4383-9c59-4c9c60b5c523",
+    "primary_intent": "Order Tracking Issue",
+    "sub_intents": [
+      "Delayed shipment",
+      "Package stuck in transit",
+      "Re-send request"
     ],
-    reason: "Easy order changes keep customers and encourage upgrades."
+    "segment": "B2C",
+    "revenue_potential": "Medium",
+    "urgency": "medium",
+    "stage": "post-sale",
+    "complexity": "High",
+    "risk_compliance": "Medium",
+    "customer_effort": "Medium",
+    "sentiment": "negative",
+    "emotion": ["Anxiety","Confusion"],
+    "PredictedAgentId": "",
+    "PredictedAgentpersona": "",
+    "PredictedAgentpersona_rank": null,
+    "PredictedAgentoverall_rank": null,
+    "PredictedAgentpersona_score": null,
+    "reason": "",
+    "ActualAgentId": "93d461313a6a2fd3821e96db1216702e06d950fcb32cfcc7565221a66195bcc6",
+    "ActualAgentpersona": "Order Status & Tracking",
+    "ActualAgentpersona_score": 1.2762106526820873,
+    "ActualAgentpersona_rank": 1
   },
   {
-    id: 9,
-    title: "Payment or Billing Issues",
-    mappedClusterIntent: "Complaints & Escalations",
-    rank: 9,
-    priority: "Critical",
-    description: "Payment and billing problems are serious issues that can escalate quickly and require specialized handling to resolve financial concerns.",
-    confidence: "85% Confidence",
-    businessOutcomes: [
-      { rank: 1, title: "Risk & Crisis Management", priority: "High", confidence: "97%" },
-      { rank: 2, title: "Enhanced Brand Trust", priority: "High", confidence: "94%" },
-      { rank: 3, title: "Recovered Sales / Lower Return Rates", priority: "Medium", confidence: "90%" },
-      { rank: 4, title: "Improved CLV / Conversion Rate", priority: "Medium", confidence: "87%" }
+    "id": 9,
+    "conversationId": "28785ae6-b40e-41dc-87e9-e4b38856dcbd",
+    "primary_intent": "Warranty Claim",
+    "sub_intents": [
+      "Backpack strap repair",
+      "Product replacement",
+      "Warranty process"
     ],
-    reason: "Resolving payment issues prevents churn and protects reputation."
+    "segment": "B2C",
+    "revenue_potential": "Low",
+    "urgency": "low",
+    "stage": "post-sale",
+    "complexity": "Low",
+    "risk_compliance": "Low",
+    "customer_effort": "High",
+    "sentiment": "Positive",
+    "emotion": ["Gratitude"],
+    "PredictedAgentId": "",
+    "PredictedAgentpersona": "",
+    "PredictedAgentpersona_rank": null,
+    "PredictedAgentoverall_rank": null,
+    "PredictedAgentpersona_score": null,
+    "reason": "",
+    "ActualAgentId": "002b65d38a697d331bc37a79b54d11a1b7f6438735a4fd17be56e166dc28a1b9",
+    "ActualAgentpersona": "Promotions & Pricing",
+    "ActualAgentpersona_score": 0.8103566940996655,
+    "ActualAgentpersona_rank": 9
   },
   {
-    id: 10,
-    title: "Lost or Undelivered Package",
-    mappedClusterIntent: "Complaints & Escalations",
-    rank: 10,
-    priority: "Critical",
-    description: "Lost packages represent significant service failures requiring investigation, compensation, and escalation to shipping partners.",
-    confidence: "92% Confidence",
-    businessOutcomes: [
-      { rank: 1, title: "Risk & Crisis Management", priority: "High", confidence: "98%" },
-      { rank: 2, title: "Recovered Sales / Lower Return Rates", priority: "High", confidence: "95%" },
-      { rank: 3, title: "Enhanced Brand Trust", priority: "High", confidence: "92%" },
-      { rank: 4, title: "Market Expansion Clues", priority: "Low", confidence: "85%" }
+    "id": 10,
+    "conversationId": "7dc1cfb7-01ac-4387-88cc-d85d9e318812",
+    "primary_intent": "First Responder Discount",
+    "sub_intents": [
+      "Discount inquiry",
+      "Promo code request"
     ],
-    reason: "Quick replacements retain customers and reveal delivery challenges."
-  },
-  {
-    id: 11,
-    title: "Product Quality or Defect Issues",
-    mappedClusterIntent: "Complaints & Escalations",
-    rank: 11,
-    priority: "Critical",
-    description: "Quality and defect issues represent product failures that require escalation for resolution and potential warranty/return processing.",
-    confidence: "95% Confidence",
-    businessOutcomes: [
-      { rank: 1, title: "Improved Product Quality Feedback Loop", priority: "High", confidence: "97%" },
-      { rank: 2, title: "Enhanced Brand Trust", priority: "High", confidence: "94%" },
-      { rank: 3, title: "Risk & Crisis Management", priority: "Medium", confidence: "91%" },
-      { rank: 4, title: "Recovered Sales / Lower Return Rates", priority: "Medium", confidence: "88%" }
-    ],
-    reason: "Defect resolution drives product improvement and customer retention."
-  },
-  {
-    id: 12,
-    title: "Website or Technical Issues",
-    mappedClusterIntent: "Complaints & Escalations",
-    rank: 12,
-    priority: "Important",
-    description: "Technical problems preventing customers from using services require escalation to technical teams and immediate attention.",
-    confidence: "88% Confidence",
-    businessOutcomes: [
-      { rank: 1, title: "Reduced Customer Effort", priority: "High", confidence: "95%" },
-      { rank: 2, title: "Recovered Sales / Lower Return Rates", priority: "High", confidence: "92%" },
-      { rank: 3, title: "Enhanced Brand Trust", priority: "Medium", confidence: "89%" },
-      { rank: 4, title: "Improved CLV / Conversion Rate", priority: "Medium", confidence: "86%" }
-    ],
-    reason: "Fixing technical issues enables purchases and builds brand confidence."
-  },
-  {
-    id: 13,
-    title: "Shipping or Delivery Inquiries",
-    mappedClusterIntent: "Order Tracking & Delivery",
-    rank: 13,
-    priority: "Critical",
-    description: "Perfect match for the Order Tracking & Delivery cluster which handles shipping and delivery questions as core functionality.",
-    confidence: "100% Confidence",
-    businessOutcomes: [
-      { rank: 1, title: "Enhanced Brand Trust", priority: "High", confidence: "94%" },
-      { rank: 2, title: "Reduced Customer Effort", priority: "High", confidence: "91%" },
-      { rank: 3, title: "Improved CLV / Conversion Rate", priority: "Medium", confidence: "87%" },
-      { rank: 4, title: "Market Expansion Clues", priority: "Low", confidence: "85%" }
-    ],
-    reason: "Transparent shipping info builds trust and reduces cancellations."
-  },
-  {
-    id: 14,
-    title: "Account or Membership Issues",
-    mappedClusterIntent: "Loyalty Program & Offers",
-    rank: 14,
-    priority: "Important",
-    description: "Account and membership issues relate to customer loyalty programs and membership management systems.",
-    confidence: "85% Confidence",
-    businessOutcomes: [
-      { rank: 1, title: "Loyalty Program Growth", priority: "High", confidence: "96%" },
-      { rank: 2, title: "Enhanced Brand Trust", priority: "High", confidence: "90%" },
-      { rank: 3, title: "Improved CLV / Conversion Rate", priority: "Medium", confidence: "85%" }
-    ],
-    reason: "Account resolution improves loyalty program engagement and retention."
-  },
-  {
-    id: 15,
-    title: "Product Information Request",
-    mappedClusterIntent: "Product Education",
-    rank: 15,
-    priority: "Informational",
-    description: "Requests for product information directly match the Product Education cluster which provides product details and specifications.",
-    confidence: "98% Confidence",
-    businessOutcomes: [
-      { rank: 1, title: "Better Product Fit & Usage Guidance", priority: "High", confidence: "87%" },
-      { rank: 2, title: "Upsell & Cross-Sell Conversions", priority: "High", confidence: "84%" },
-      { rank: 3, title: "Enhanced Brand Trust", priority: "Medium", confidence: "82%" }
-    ],
-    reason: "Product education drives informed purchasing decisions and reduces returns."
-  },
-  {
-    id: 16,
-    title: "First-time Customer Discount",
-    mappedClusterIntent: "Loyalty Program & Offers",
-    rank: 16,
-    priority: "Important",
-    description: "First-time customer discounts are promotional offers that fall under loyalty programs and special offers management.",
-    confidence: "90% Confidence",
-    businessOutcomes: [
-      { rank: 1, title: "Campaign Effectiveness", priority: "High", confidence: "90%" },
-      { rank: 2, title: "Improved CLV / Conversion Rate", priority: "High", confidence: "88%" },
-      { rank: 3, title: "Loyalty Program Growth", priority: "Medium", confidence: "85%" }
-    ],
-    reason: "First-time discounts drive customer acquisition and loyalty program enrollment."
+    "segment": "B2C",
+    "revenue_potential": "Low",
+    "urgency": "low",
+    "stage": "awareness",
+    "complexity": "Low",
+    "risk_compliance": "Medium",
+    "customer_effort": "High",
+    "sentiment": "Positive",
+    "emotion": ["Gratitude"],
+    "PredictedAgentId": "",
+    "PredictedAgentpersona": "",
+    "PredictedAgentpersona_rank": null,
+    "PredictedAgentoverall_rank": null,
+    "PredictedAgentpersona_score": null,
+    "reason": "",
+    "ActualAgentId": "aba7a54f18775fed4ea7c8a0e241be415faee19b78c6767e86cf0e856b74e0c7",
+    "ActualAgentpersona": "Product Information & Support",
+    "ActualAgentpersona_score": 0.9869449034881781,
+    "ActualAgentpersona_rank": 2
   }
-];
-      
+]
