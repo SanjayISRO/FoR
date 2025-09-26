@@ -7,100 +7,217 @@ import { DataGrid, type GridColDef } from "@mui/x-data-grid";
 import Groups2OutlinedIcon from "@mui/icons-material/Groups2Outlined";
 import FolderCopyOutlinedIcon from "@mui/icons-material/FolderCopyOutlined";
 import IntentsAndOutcomeHeader from "../../IntentsAndOutcomeHeader/IntentsAndOutcomeHeader";
-import { AGENT_PERSONA_TABLE_DATA } from "../../../Contracts/AgentPersona";
+import { AGENT_PERSONA_DATA } from "../../../Contracts/AgentPersona";
 
 const AgentPersonas: React.FC = () => {
   const [agentsCount, setAgentsCount] = useState<number>(0);
   const columns: GridColDef[] = [
     {
-      field: "Category",
-      headerName: "Category",
-      width: 160,
-      sortable: false,
-      renderCell: (params) => <p style={{ fontSize: "14px" }}>{params.value}</p>,
-    },
-    {
-      field: "Name",
+      field: "personaName",
       headerName: "Name",
-      width: 180,
-      sortable: false,
-      renderCell: (params) => <p style={{ fontSize: "14px" }}>{params.value}</p>,
-    },
-    {
-      field: "Traits",
-      headerName: "Traits",
-      width: 220,
+      width: 200,
       sortable: false,
       renderCell: (params) => (
-        <Chip
-          label={params.value.map((trait: string) => `- ${trait}`).join('\n\n')}
-          variant="outlined"
-          size="medium"
-          sx={{
-            backgroundColor: "#172950",
-            borderColor: "#172950",
-            color: "#fff",
-            fontWeight: 500,
-            fontSize: "12px",
-            height: "auto",
-            minHeight: "28px",
-            width: "100%",
-            "& .MuiChip-label": {
-              whiteSpace: "pre-line",
-              wordWrap: "break-word",
-              wordBreak: "break-word",
-              padding: "10px",
-              lineHeight: "1.3",
-            },
-          }}
-        />
-      ),
-    },
-    {
-      field: "Type",
-      headerName: "Type",
-      width: 120,
-      sortable: false,
-      renderCell: (params) => <p style={{ fontSize: "14px" }}>{params.value}</p>,
-    },
-    {
-      field: "Behaviour",
-      headerName: "Behaviour",
-      width: 325,
-      sortable: false,
-      renderCell: (params) => (
-        <div style={{ padding: "8px 4px", width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "flex-start" }}>
-          {Array.isArray(params.value) ? (
-            <div style={{ width: "100%" }}>
-              {params.value.map((item: string, index: number) => (
-                <div key={index} style={{ marginBottom: "6px", fontSize: "14px", lineHeight: "1.3", wordWrap: "break-word", wordBreak: "break-word", whiteSpace: "normal" }}>
-                  • {item}
-                </div>
-              ))}
-            </div>
-          ) : (
-            <p style={{ fontSize: "12px", lineHeight: "1.4", margin: 0, wordWrap: "break-word", wordBreak: "break-word", whiteSpace: "normal", textAlign: "left", width: "100%" }}>{params.value}</p>
-          )}
+        <div style={{ 
+          padding: "8px 4px", 
+          width: "100%", 
+          height: "100%", 
+          display: "flex", 
+          alignItems: "center", 
+          justifyContent: "flex-start"
+        }}>
+          <p style={{ 
+            fontSize: "14px", 
+            lineHeight: "1.4", 
+            margin: 0, 
+            wordWrap: "break-word", 
+            wordBreak: "break-word", 
+            whiteSpace: "normal", 
+            textAlign: "left", 
+            width: "100%" 
+          }}>
+            {params.value}
+          </p>
         </div>
       ),
     },
     {
-      field: "Count",
-      headerName: "Count",
-      headerAlign: "center",
-      width: 130,
+      field: "roleSummary",
+      headerName: "Role",
+      width: 250,
       sortable: false,
-      renderCell: (params) => <p style={{ fontSize: "13px", textAlign: "center" }}>{Array.isArray(params.value) ? params.value.length : params.value}</p>,
+      renderCell: (params) => (
+        <div style={{ 
+          padding: "8px 4px", 
+          width: "100%", 
+          height: "100%", 
+          display: "flex", 
+          alignItems: "center", 
+          justifyContent: "flex-start"
+        }}>
+          <p style={{ 
+            fontSize: "14px", 
+            lineHeight: "1.4", 
+            margin: 0, 
+            wordWrap: "break-word", 
+            wordBreak: "break-word", 
+            whiteSpace: "normal", 
+            textAlign: "left", 
+            width: "100%" 
+          }}>
+            {params.value}
+          </p>
+        </div>
+      ),
+    },
+    {
+      field: "personaProfile",
+      headerName: "Profile",
+      width: 400,
+      sortable: false,
+      renderCell: (params) => (
+        <div style={{ 
+          padding: "8px 4px", 
+          width: "100%", 
+          height: "100%", 
+          display: "flex", 
+          alignItems: "center", 
+          justifyContent: "center"
+        }}>
+          <Chip
+            label={
+              `- "intent_triggers": [${params.value.intent_triggers.map((trigger: string) => `"${trigger}"`).join(", ")}]\n\n` +
+              `- "stage_triggers": [${params.value.stage_triggers.map((trigger: string) => `"${trigger}"`).join(", ")}]\n\n` +
+              `- "segment_triggers": [${params.value.segment_triggers.map((trigger: string) => `"${trigger}"`).join(", ")}]\n\n` +
+              `- "behavioural_traits_notes": "${params.value.behavioural_traits_notes}"\n\n` +
+              `- "performance_traits_notes": "${params.value.performance_traits_notes}"`
+            }
+            variant="outlined"
+            size="medium"
+            sx={{
+              backgroundColor: "#172950",
+              borderColor: "#172950",
+              color: "#fff",
+              fontWeight: 500,
+              fontSize: "12px",
+              height: "auto",
+              minHeight: "28px",
+              width: "100%",
+              "& .MuiChip-label": {
+                whiteSpace: "pre-line",
+                wordWrap: "break-word",
+                wordBreak: "break-word",
+                padding: "10px",
+                lineHeight: "1.3",
+              },
+            }}
+          />
+        </div>
+      ),
+    },
+    {
+      field: "leading_kpis",
+      headerName: "Leading KPI's",
+      width: 250,
+      sortable: false,
+      renderCell: (params) => (
+        <div style={{ 
+          padding: "8px 4px", 
+          width: "100%", 
+          height: "100%", 
+          display: "flex", 
+          alignItems: "center", 
+          justifyContent: "center"
+        }}>
+          <Chip
+            label={params.value.map((kpi: any) => `• ${kpi.kpi_name}`).join('\n\n')}
+            variant="outlined"
+            size="medium"
+            sx={{
+              backgroundColor: "#172950",
+              borderColor: "#172950",
+              color: "#fff",
+              fontWeight: 500,
+              fontSize: "12px",
+              height: "auto",
+              minHeight: "28px",
+              width: "100%",
+              "& .MuiChip-label": {
+                whiteSpace: "pre-line",
+                wordWrap: "break-word",
+                wordBreak: "break-word",
+                padding: "10px",
+                lineHeight: "1.3",
+              },
+            }}
+          />
+        </div>
+      ),
+    },
+    {
+      field: "lagging_kpis",
+      headerName: "Lagging KPI's",
+      width: 250,
+      sortable: false,
+      renderCell: (params) => (
+        <div style={{ 
+          padding: "8px 4px", 
+          width: "100%", 
+          height: "100%", 
+          display: "flex", 
+          alignItems: "center", 
+          justifyContent: "center"
+        }}>
+          <Chip
+            label={params.value.map((kpi: any) => `• ${kpi.kpi_name}`).join('\n\n')}
+            variant="outlined"
+            size="medium"
+            sx={{
+              backgroundColor: "#172950",
+              borderColor: "#172950",
+              color: "#fff",
+              fontWeight: 500,
+              fontSize: "12px",
+              height: "auto",
+              minHeight: "28px",
+              width: "100%",
+              "& .MuiChip-label": {
+                whiteSpace: "pre-line",
+                wordWrap: "break-word",
+                wordBreak: "break-word",
+                padding: "10px",
+                lineHeight: "1.3",
+              },
+            }}
+          />
+        </div>
+      ),
+    },
+    {
+      field: "agentCount",
+      headerName: "Count",
+      headerAlign: "left",
+      width: 100,
+      sortable: false,
+      renderCell: (params) => <p style={{ fontSize: "14px", textAlign: "left" }}>{params.value}</p>,
     },
   ];
 
-  const agentPersonaData = AGENT_PERSONA_TABLE_DATA;
+  const agentPersonaData = AGENT_PERSONA_DATA.map((persona, index) => ({
+    id: index,
+    personaName: persona.personaName,
+    roleSummary: persona.roleSummary,
+    personaProfile: persona.personaProfile,
+    leading_kpis: persona.kpi_alignment.leading_kpis,
+    lagging_kpis: persona.kpi_alignment.lagging_kpis,
+    agentCount: persona.agentCount
+  }));
 
   useEffect(() => {
     let count = 0;
 
-    agentPersonaData.forEach((data) => {
-      count = count + (Array.isArray(data.Count) ? data.Count.length : data.Count);
+    AGENT_PERSONA_DATA.forEach((data) => {
+      count = count + data.agentCount;
     });
 
     setAgentsCount(count);
@@ -129,10 +246,8 @@ const AgentPersonas: React.FC = () => {
           <DataGrid
             rows={agentPersonaData}
             columns={columns}
-            checkboxSelection
-            // onRowSelectionModelChange={(e) => handleSelectionChange(e)}
             pageSizeOptions={[10, 20, 30]}
-            rowHeight={220}
+            rowHeight={300}
             initialState={{
               pagination: {
                 paginationModel: { page: 0, pageSize: 10 },
@@ -155,10 +270,7 @@ const AgentPersonas: React.FC = () => {
                 alignItems: "baseline",
                 margin: "10px 50px",
               },
-              "& .MuiDataGrid-columnHeaderCheckbox, .MuiDataGrid-cellCheckbox":
-                {
-                  display: "none",
-                },
+
               "& .MuiDataGrid-columnHeaderTitle": {
                 fontWeight: "bold",
                 fontSize: "15px",

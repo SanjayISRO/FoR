@@ -9,6 +9,8 @@ import { useNavigate } from "react-router-dom";
 import Stepper from "../../components/Layouts/Stepper/Stepper";
 import styles from "./SimulationSetup.module.css";
 import DataInputSources from "../../components/Layouts/DataInputSources/DataInputSources";
+import GoalsAndKPIs from "../../components/Layouts/GoalsAndKPIs/GoalsAndKPIs";
+import FeatureTaxonomy from "../../components/Layouts/FeatureTaxonomy/FeatureTaxonomy";
 import FilterAndReview from "../../components/Layouts/FilterAndReview/FilterAndReview";
 import ReviewAndValidate from "../../components/Layouts/ReviewAndValidate/ReviewAndValidate";
 import ConfigureSimulation from "../../components/Layouts/ConfigureSimulation/ConfigureSimulation";
@@ -22,10 +24,12 @@ const SimulationSetup: React.FC = () => {
 
   const stepperPageCount = {
     1: "dataInputSources",
-    2: "filterAndReview",
-    3: 'agentPersonas',
-    4: "reviewAndValidate",
-    5: "configureSimulation",
+    2: "goalsAndKPIs",
+    3: "featureTaxonomy",
+    4: "agentPersonas",
+    5: "filterAndReview",
+    6: "reviewAndValidate",
+    7: "configureSimulation",
   };
 
   useEffect(() => {
@@ -74,6 +78,8 @@ const SimulationSetup: React.FC = () => {
 
         <section className={styles.data_input_sources}>
           {state.currentPage === "dataInputSources" && <DataInputSources />}
+          {state.currentPage === "goalsAndKPIs" && <GoalsAndKPIs />}
+          {state.currentPage === "featureTaxonomy" && <FeatureTaxonomy />}
           {state.currentPage === "filterAndReview" && <FilterAndReview />}
           {state.currentPage === "agentPersonas" && <AgentPersonas />}
           {state.currentPage === "reviewAndValidate" && <ReviewAndValidate />}

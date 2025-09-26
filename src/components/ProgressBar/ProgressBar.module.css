@@ -1,10 +1,10 @@
 .progressbar_div {
     transform: rotate(90deg);
     transform-origin: center;
-    top: 325px;
-    left: -41%;
+    top: 425px;
+    left: -44%;
 }
 
 .container {
-    width: 550px !important;
+    width: 750px !important;
 }

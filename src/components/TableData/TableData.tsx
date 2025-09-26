@@ -26,18 +26,27 @@ import IntentsAndOutcomeHeader from "../IntentsAndOutcomeHeader/IntentsAndOutcom
 interface ConversationData {
   id: number;
   conversationId: string;
-  customerIntent: string;
-  businessOutcome: string[];
-  customerSentiment: string;
-  predictedAgentPersona: string;
-  predictedAgent: string;
-  reasonForPrediction?: string;
-  actualAgentPersona?: string;
-  actualAgent: string;
-  actualAgentPersonaConfidence: string;
-  predictedAgentName: string;
-  actualAgentName: string;
-  predictedAgentPersonaConfidence: string
+  primary_intent: string;
+  sub_intents: string[];
+  segment: string;
+  revenue_potential: string;
+  urgency: string;
+  stage: string;
+  complexity: string;
+  risk_compliance: string;
+  customer_effort: string;
+  sentiment: string;
+  emotion: string[];
+  PredictedAgentId: string;
+  PredictedAgentpersona: string;
+  PredictedAgentpersona_rank: number | null;
+  PredictedAgentoverall_rank: number | null;
+  PredictedAgentpersona_score: number | null;
+  reason: string;
+  ActualAgentId: string;
+  ActualAgentpersona: string;
+  ActualAgentpersona_score: number;
+  ActualAgentpersona_rank: number;
 }
 const TableData: React.FC = () => {
   const [open, setOpen] = useState(false);
@@ -52,7 +61,7 @@ const TableData: React.FC = () => {
       sortable: false,
     },
     {
-      field: "customerIntent",
+      field: "primary_intent",
       headerName: "Customer Intent",
       width: 300,
       sortable: false,
@@ -72,45 +81,13 @@ const TableData: React.FC = () => {
       ),
     },
     {
-      field: "predictedAgentPersona",
+      field: "PredictedAgentpersona",
       headerName: "Predicted Agent Persona",
       width: 300,
       sortable: false,
       renderCell: (params) => (
-        // <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5, py: 1 }}>
-        //   {Array.isArray(params.value) ? (
-        //     params.value.map((outcome, index) => (
-        //       <Chip
-        //         key={index}
-        //         label={outcome}
-        //         variant="filled"
-        //         size="small"
-        //         sx={{
-        //           backgroundColor: "#172950",
-        //           borderColor: "#172950",
-        //           color: "#fff",
-        //           fontWeight: 500,
-        //           fontSize: "14px",
-        //         }}
-        //       />
-        //     ))
-        //   ) : (
-        //     <Chip
-        //       label={params.value}
-        //       variant="filled"
-        //       size="small"
-        //       sx={{
-        //         backgroundColor: "#172950",
-        //         borderColor: "#172950",
-        //         color: "#fff",
-        //         fontWeight: 500,
-        //         fontSize: "14px",
-        //       }}
-        //     />
-        //   )}
-        // </Box>
         params.value ? <Chip
-          label={params.value.split('-')[0]}
+          label={params.value}
           variant="outlined"
           size="small"
           sx={{
@@ -133,7 +110,6 @@ const TableData: React.FC = () => {
               fontSize: "14px",
             }}
           />
-
       ),
     },
     {
@@ -272,13 +248,13 @@ const TableData: React.FC = () => {
               <Box sx={{ mb: 2 }}>
                 <h4>Conversation ID</h4>
 
-                <p>{modalData?.conversationId}</p>
+                <p style={{fontSize: '16px'}}>{modalData?.conversationId}</p>
               </Box>
 
               <Box sx={{ mb: 2 }}>
                 <h4>Customer Intent</h4>
                 <Chip
-                  label={modalData?.customerIntent}
+                  label={modalData?.primary_intent}
                   size="small"
                   sx={{
                     backgroundColor: "#172950",
@@ -293,12 +269,12 @@ const TableData: React.FC = () => {
               </Box>
 
               <Box sx={{ mb: 3 }}>
-                <h4>Business Outcomes</h4>
-                <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
-                  {modalData?.businessOutcome?.map((outcome, index) => (
+                <h4>Sub Intents</h4>
+                <Box sx={{ display: "flex", flexDirection: "column", gap: 0.5, alignItems: "flex-start" }}>
+                  {modalData?.sub_intents?.map((intent, index) => (
                     <Chip
                       key={index}
-                      label={outcome}
+                      label={intent}
                       size="small"
                       sx={{
                         backgroundColor: "#172950",
@@ -306,20 +282,20 @@ const TableData: React.FC = () => {
                         color: "#fff",
                         fontWeight: 500,
                         fontSize: "14px",
-                        mt: 0.5,
                         padding: "10px",
+                        flexShrink: 0,
                       }}
                     />
                   ))}
                 </Box>
               </Box>
 
-              {modalData?.customerSentiment && (
+              {modalData?.sentiment && (
                 <Box sx={{ mb: 3 }}>
                   <h4>Customer Sentiment</h4>
                   <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
                     <Chip
-                      label={modalData.customerSentiment}
+                      label={modalData.sentiment}
                       size="small"
                       sx={{
                         backgroundColor: "#172950",
@@ -336,6 +312,162 @@ const TableData: React.FC = () => {
                 </Box>
               )}
 
+              <Box sx={{ mb: 3 }}>
+                <h4>Attributes</h4>
+                <Box sx={{ display: "flex", flexDirection: "column", gap: 0.5, alignItems: "flex-start" }}>
+                  {modalData?.risk_compliance === "High" && (
+                    <Chip
+                      label="Risk Compliance: High"
+                      size="small"
+                      sx={{
+                        backgroundColor: "#172950",
+                        borderColor: "#172950",
+                        color: "#fff",
+                        fontWeight: 500,
+                        fontSize: "14px",
+                        padding: "10px",
+                        flexShrink: 0,
+                      }}
+                    />
+                  )}
+                  {modalData?.customer_effort === "High" && (
+                    <Chip
+                      label="Customer Effort: High"
+                      size="small"
+                      sx={{
+                        backgroundColor: "#172950",
+                        borderColor: "#172950",
+                        color: "#fff",
+                        fontWeight: 500,
+                        fontSize: "14px",
+                        padding: "10px",
+                        flexShrink: 0,
+                      }}
+                    />
+                  )}
+                  {modalData?.urgency === "High" && (
+                    <Chip
+                      label="Urgency: High"
+                      size="small"
+                      sx={{
+                        backgroundColor: "#172950",
+                        borderColor: "#172950",
+                        color: "#fff",
+                        fontWeight: 500,
+                        fontSize: "14px",
+                        padding: "10px",
+                        flexShrink: 0,
+                      }}
+                    />
+                  )}
+                  {modalData?.complexity === "High" && (
+                    <Chip
+                      label="Complexity: High"
+                      size="small"
+                      sx={{
+                        backgroundColor: "#172950",
+                        borderColor: "#172950",
+                        color: "#fff",
+                        fontWeight: 500,
+                        fontSize: "14px",
+                        padding: "10px",
+                        flexShrink: 0,
+                      }}
+                    />
+                  )}
+                  {modalData?.revenue_potential === "High" && (
+                    <Chip
+                      label="Revenue Potential: High"
+                      size="small"
+                      sx={{
+                        backgroundColor: "#172950",
+                        borderColor: "#172950",
+                        color: "#fff",
+                        fontWeight: 500,
+                        fontSize: "14px",
+                        padding: "10px",
+                        flexShrink: 0,
+                      }}
+                    />
+                  )}
+                  {modalData?.risk_compliance === "Low" && (
+                    <Chip
+                      label="Risk Compliance: Low"
+                      size="small"
+                      sx={{
+                        backgroundColor: "#172950",
+                        borderColor: "#172950",
+                        color: "#fff",
+                        fontWeight: 500,
+                        fontSize: "14px",
+                        padding: "10px",
+                        flexShrink: 0,
+                      }}
+                    />
+                  )}
+                  {modalData?.customer_effort === "Low" && (
+                    <Chip
+                      label="Customer Effort: Low"
+                      size="small"
+                      sx={{
+                        backgroundColor: "#172950",
+                        borderColor: "#172950",
+                        color: "#fff",
+                        fontWeight: 500,
+                        fontSize: "14px",
+                        padding: "10px",
+                        flexShrink: 0,
+                      }}
+                    />
+                  )}
+                  {modalData?.urgency === "Low" && (
+                    <Chip
+                      label="Urgency: Low"
+                      size="small"
+                      sx={{
+                        backgroundColor: "#172950",
+                        borderColor: "#172950",
+                        color: "#fff",
+                        fontWeight: 500,
+                        fontSize: "14px",
+                        padding: "10px",
+                        flexShrink: 0,
+                      }}
+                    />
+                  )}
+                  {modalData?.complexity === "Low" && (
+                    <Chip
+                      label="Complexity: Low"
+                      size="small"
+                      sx={{
+                        backgroundColor: "#172950",
+                        borderColor: "#172950",
+                        color: "#fff",
+                        fontWeight: 500,
+                        fontSize: "14px",
+                        padding: "10px",
+                        flexShrink: 0,
+                      }}
+                    />
+                  )}
+                  {modalData?.revenue_potential === "Low" && (
+                    <Chip
+                      label="Revenue Potential: Low"
+                      size="small"
+                      sx={{
+                        backgroundColor: "#172950",
+                        borderColor: "#172950",
+                        color: "#fff",
+                        fontWeight: 500,
+                        fontSize: "14px",
+                        padding: "10px",
+                        flexShrink: 0,
+                      }}
+                    />
+                  )}
+                </Box>
+              </Box>
+
 
             </SectionContainer>
 
@@ -345,32 +477,43 @@ const TableData: React.FC = () => {
                 icon={PersonSearchOutlinedIcon}
               />
               <Divider sx={{ margin: "10px 0", opacity: "1" }} />
-              {/* <Box sx={{ mb: 2 }}>
-                <h4>Predicted Agent's Id</h4>
-
-                <p style={{wordWrap: 'break-word'}}>{modalData?.predictedAgent}</p>
-              </Box> */}
-              <Box sx={{ mb: 2 }}>
-                <h4>Agent's Name</h4>
-
-                <p>{modalData?.predictedAgentName}</p>
-              </Box>
-              <Box sx={{ mb: 2 }}>
-                <h4>Agent's Persona</h4>
-
-                <p>{modalData?.predictedAgentPersona}</p>
-              </Box>
-              <Box sx={{ mb: 2 }}>
-                <h4>Reason for Prediction</h4>
-
-                <p>{modalData?.reasonForPrediction}</p>
-              </Box>
-
-              <Box sx={{ mb: 2 }}>
-                <h4>Agent's Persona Confidence</h4>
-
-                <p>{modalData?.predictedAgentPersonaConfidence}</p>
-              </Box>
+              {modalData?.PredictedAgentpersona_rank === null ? (
+                <Box sx={{ mb: 2 }}>
+                  <p style={{fontSize: '16px', fontStyle: 'italic'}}>Agents currently not available</p>
+                </Box>
+              ) : (
+                <>
+                  <Box sx={{ mb: 2 }}>
+                    <h4>Agent ID</h4>
+                    <p style={{wordWrap: 'break-word', fontSize: '16px'}}>{modalData?.PredictedAgentId}</p>
+                  </Box>
+                  
+                  <Box sx={{ mb: 2 }}>
+                    <h4>Agent Persona</h4>
+                    <p style={{fontSize: '16px'}}>{modalData?.PredictedAgentpersona}</p>
+                  </Box>
+                  
+                  <Box sx={{ mb: 2 }}>
+                    <h4>Persona Rank</h4>
+                    <p style={{fontSize: '16px'}}>{modalData?.PredictedAgentpersona_rank}</p>
+                  </Box>
+                  
+                  <Box sx={{ mb: 2 }}>
+                    <h4>Overall Rank</h4>
+                    <p style={{fontSize: '16px'}}>{modalData?.PredictedAgentoverall_rank}</p>
+                  </Box>
+                  
+                  <Box sx={{ mb: 2 }}>
+                    <h4>Persona Score</h4>
+                    <p style={{fontSize: '16px'}}>{modalData?.PredictedAgentpersona_score}</p>
+                  </Box>
+                  
+                  <Box sx={{ mb: 2 }}>
+                    <h4>Agent Role</h4>
+                    <p style={{fontSize: '16px'}}>{modalData?.reason}</p>
+                  </Box>
+                </>
+              )}
             </SectionContainer>
 
             <SectionContainer widthValue="33%" backgroundColor="#f6f8ff">
@@ -379,26 +522,24 @@ const TableData: React.FC = () => {
                 icon={SupportAgentOutlinedIcon}
               />
               <Divider sx={{ margin: "10px 0", opacity: "1" }} />
-              {/* <Box sx={{ mb: 2 }}>
-                <h4>Actual Agent's Id</h4>
-
-                <p style={{wordWrap: 'break-word'}}>{modalData?.actualAgent}</p>
-              </Box> */}
               <Box sx={{ mb: 2 }}>
-                <h4>Agent's Name</h4>
-
-                <p>{modalData?.actualAgentName}</p>
+                <h4>Agent ID</h4>
+                <p style={{wordWrap: 'break-word', fontSize: '16px'}}>{modalData?.ActualAgentId}</p>
               </Box>
+              
               <Box sx={{ mb: 2 }}>
-                <h4>Agent's Persona</h4>
-
-                <p>{modalData?.actualAgentPersona}</p>
+                <h4>Agent Persona</h4>
+                <p style={{fontSize: '16px'}}>{modalData?.ActualAgentpersona}</p>
               </Box>
 
               <Box sx={{ mb: 2 }}>
-                <h4>Agent's Persona Confidence</h4>
+                <h4>Persona Score</h4>
+                <p style={{fontSize: '16px'}}>{modalData?.ActualAgentpersona_score}</p>
+              </Box>
 
-                <p>{modalData?.actualAgentPersonaConfidence}</p>
+              <Box sx={{ mb: 2 }}>
+                <h4>Persona Rank</h4>
+                <p style={{fontSize: '16px'}}>{modalData?.ActualAgentpersona_rank}</p>
               </Box>
             </SectionContainer>
           </div>
